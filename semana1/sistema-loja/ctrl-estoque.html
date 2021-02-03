@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Controle de Estoque</title>
+    <title>Bar Pé de Cana !</title>
+    <link rel="icon" type="img/jpg" href="./img/icone.jpg">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-    <div>
-        <p>Nome da lojinha</p>
-    </div>
-    
-    <div>
-        <a href="./index.html">Página Inicial</a>
-        <a href="./ctrl-estoque.html">Controle de Estoque</a>
-        <a href="./add-produto.html">Adicionar Produto</a>
-        <a href="./funcionarios.html">Funcionários</a>
+    <header>
+        <div class="icone-pai">
+            <img class="icone-cerveja" src="./img/icone.jpg">
+            <h1 class="bemvindo">Bem-vind@ a <em>Bar Pé de Cana</em>!</h1>
+            <img class="icone-cerveja direita" src="./img/icone.jpg">
+        </div>
+        <p class="bemvindo">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Unde doloribus temporibus ipsum placeat officiis aut quo dolorem cupiditate
+            voluptate illo nam delectus veritatis, modi quas dignissimos! Recusandae modi deleniti sapiente!
+        </p>
+    </header>
+
+    <div class="link-pai">
+        <a class="link" href="./index.html">Página Inicial</a>
+        <a class="link" href="./ctrl-estoque.html">Controle de Estoque</a>
+        <a class="link" href="./add-produto.html">Adicionar Produto</a>
+        <a class="link" href="./funcionarios.html">Funcionários</a>
     </div>
 
     <h2>Controle de Estoque</h2>
 
-    <table>
+    <table border="1">
         <tr>
             <th>Foto</th>
             <th>Descrição</th>
@@ -29,62 +42,67 @@
         </tr>
 
         <tr>
-            <td><img src="./img/bhrama.png" alt="cerveja brama"/></td>
-            <td> Cerveja Bhrama </td>
-            <td> R$2,50 </td>
-            <td> 15 </td>
+            <td class="td-tabela"><img src="./img/bhrama.png" alt="cerveja brama" /></td>
+            <td class="td-tabela"> Cerveja Bhrama </td>
+            <td class="td-tabela"> R$2,50 </td>
+            <td class="td-tabela"> 15 </td>
         </tr>
 
         <tr>
-            <td><img src="./img/heinkein.jpg" alt="cerveja heinkein"/></td>
-            <td> Cerveja heinkein </td>
-            <td> R$4,50 </td>
-            <td> 30 </td>
+            <td class="td-tabela"><img src="./img/heinkein.jpg" alt="cerveja heinkein" /></td>
+            <td class="td-tabela"> Cerveja heinkein </td>
+            <td class="td-tabela"> R$4,50 </td>
+            <td class="td-tabela"> 30 </td>
         </tr>
 
         <tr>
-            <td><img src="./img/skol.png" alt="cerveja skol"/></td>
-            <td> Cerveja Skol </td>
-            <td> R$3,40 </td>
-            <td> 20 </td>
+            <td class="td-tabela"><img src="./img/skol.png" alt="cerveja skol" class="imagem-produto" /></td>
+            <td class="td-tabela"> Cerveja Skol </td>
+            <td class="td-tabela"> R$3,40 </td>
+            <td class="td-tabela"> 20 </td>
         </tr>
 
         <tr>
-            <td><img src="./img/bud.png" alt="cerveja budweiser"/></td>
-            <td> Cerveja Budweiser </td>
-            <td> R$3,90 </td>
-            <td> 20 </td>
+            <td class="td-tabela"><img src="./img/bud.png" alt="cerveja budweiser" /></td>
+            <td class="td-tabela"> Cerveja Budweiser </td>
+            <td class="td-tabela"> R$3,90 </td>
+            <td class="td-tabela"> 20 </td>
         </tr>
         <tr>
-            <td><img src="./img/bavaria.png" alt="cerveja bavaria"></td>
-            <td> Cerveja Bavaria  </td>
-            <td> R$1,50 </td>
-            <td> 100 </td>
+            <td class="td-tabela"><img src="./img/bavaria.png" alt="cerveja bavaria"></td>
+            <td class="td-tabela"> Cerveja Bavaria </td>
+            <td class="td-tabela"> R$1,50 </td>
+            <td class="td-tabela"> 100 </td>
         </tr>
         <tr>
-            <td><img src="./img/queijo.jpg" alt="queijo fazendinha"></td>
-            <td> Queijo da fazendinha  </td>
-            <td> R$5,50 </td>
-            <td> 10 </td>
+            <td class="td-tabela"><img src="./img/queijo.jpg" alt="queijo fazendinha"></td>
+            <td class="td-tabela"> Queijo da fazendinha </td>
+            <td class="td-tabela"> R$5,50 </td>
+            <td class="td-tabela"> 10 </td>
         </tr>
-       
-        <tr>
-            <td><img src="./img/salame.jpg" alt="Salame"></td>
-            <td> Salaminho salaminado  </td>
-            <td> R$7,50 </td>
-            <td> 25 </td>
-        </tr>
-       
-        <tr>
-            <td><img src="./img/salgadinho.png" alt="salgadinho"></td>
-            <td> Salgadinho salgado  </td>
-            <td> R$9,50 </td>
-            <td> 145 </td>
-        </tr>
-       
-        <!-- Crie mais uma linha desta tabela abaixo \/ -->
 
+        <tr>
+            <td class="td-tabela"><img src="./img/salame.jpg" alt="Salame"></td>
+            <td class="td-tabela"> Salaminho salaminado </td>
+            <td class="td-tabela"> R$7,50 </td>
+            <td class="td-tabela"> 25 </td>
+        </tr>
+
+        <tr>
+            <td class="td-tabela"><img src="./img/salgadinho.png" alt="salgadinho"></td>
+            <td class="td-tabela"> Salgadinho salgado </td>
+            <td class="td-tabela"> R$9,50 </td>
+            <td class="td-tabela"> 145 </td>
+        </tr>
     </table>
-
+    <footer>
+        <p>Siga-nos nas redes sociais!</p>
+        <div class="imagens-footer">
+            <img src="https://image.flaticon.com/icons/png/512/25/25305.png" />
+            <img src="https://image.flaticon.com/icons/png/512/25/25425.png" />
+            <img src="https://image.flaticon.com/icons/png/512/8/8800.png" />
+        </div>
+    </footer>
 </body>
+
 </html>
