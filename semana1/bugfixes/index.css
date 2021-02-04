@@ -47,6 +47,7 @@ div img {
     color: white;
     display: block;
     margin: auto;
+    margin-top: 100px;
 }
 
 .botao-amarelo:hover {
@@ -87,9 +88,10 @@ div img {
     background-color: #e7eb90;
 }
 
-#container-para-comprar>p {
+#container-para-comprar p {
     color: #c44f00;
-    padding: 100px 0;
+    display: block;
+    padding-top: 100px;
     font-size: 60px;
 }
 
@@ -110,8 +112,9 @@ div:last-child {
 }
 
 .tabela-comprar {
-    width: 60%;
+    width: 80%;
     margin: auto;
+    margin-left: 300px;
 }
 
 td button {
@@ -119,7 +122,8 @@ td button {
     width: 150px;
     height: 30px;
     border-radius: 5px;
-    /* color: black; */
+    color: black;
+    font-weight: bold;
 }
 td button:hover{
     background-color: #b69606;
@@ -136,7 +140,9 @@ td img{
     background-color: white;
 }
 
-
+.div-do-botao{
+    padding-top: 100px;
+}
 #back-button {
     background-color: white;
     width: 100px;
@@ -145,6 +151,7 @@ td img{
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    font-weight: bold;
 }
 
 #back-button:hover {
