@@ -68,7 +68,8 @@ div img {
   *
   **/
 .texto-container{
-    padding: 200px; 
+    padding: 100px;
+    list-style-position: inside; 
 }
 #container-de-descricao {
     background-color: #2274a5;
@@ -101,8 +102,9 @@ div:last-child {
     text-align: center;
 }
 
-table {
+.tabela-comprar {
     width: 60%;
+    margin: auto;
 }
 
 td button {
