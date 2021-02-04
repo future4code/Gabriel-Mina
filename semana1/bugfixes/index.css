@@ -58,7 +58,9 @@ div img {
 }
 
 .icone {
-    height: 15px;
+    height: 30px;
+    width: 30px;
+    background-color: white;
 }
 
 
@@ -123,6 +125,7 @@ td img{
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+    background-color: white;
 }
 
 
