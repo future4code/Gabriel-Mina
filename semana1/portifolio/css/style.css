@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(188, 229, 243);
+    background-color: rgb(67, 202, 247);
+    color: rgb(255, 255, 255);
 }
 header{
     margin-bottom: 30px;
@@ -12,7 +13,8 @@ ul{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    margin: auto;
+    margin: auto; 
+    margin-top: 50px;
 }
 li{
     float: left;
@@ -20,20 +22,111 @@ li{
 }
 li a{
     display: inline;
-    color: white;
     text-align: center;
     padding: 60px;
     font-size: 30px;
     text-decoration: none;
 }
 li a:hover{
-    background-color: rgb(99, 205, 240);
+    background-color: rgb(0, 122, 163);
+}
+.sobre-mim{
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.sobre-mim h2{
+    margin-bottom: 20px;
+}
+.sobre-mim h3{
+    margin-top: 30px;
 }
 .foto-minha{
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     border-radius: 100px;
 }
-main{
-    background-color: #eceaea;
+aside{
+    text-align: center;
+    padding: 10px;
+    font-size: 21px;
+}
+.habilidades{
+    width: 50%;
+    display:inline;
+    margin-left: 300px;
+    padding: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 100px;
+}
+.soft-skill{
+    margin: 20px 0;
+}
+.soft-skill h4{
+    margin-bottom: 20px;
+}
+.soft-tabela{
+    margin-left: 30px;
+}
+.hard-skill{
+    margin-bottom: 30px;
+}
+.hard-skill h4{
+    margin-bottom: 20px;
+}
+.hard-tabela{
+    margin-top: 30px;
+    margin-left: 300px;
+}
+.hard-tabela , .soft-tabela{
+    padding: 4px;
+}
+.projeto-fotos{
+    margin-left: 370px;
+}
+.galeria-fotos h4{
+    text-align: center;
+}
+.galeria-fotos{
+    margin-bottom: 40px;
+}
+.foto-projeto{
+    height: 200px;
+    width: 200px;
+    border-radius: 80px;
+}
+/*Pagina projeto.hmtl*/
+.foto-projeto1{
+    margin-left: 120px;
+}
+.projeto h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.projeto p , .projeto h2 {
+    text-align: center;
+}
+/* pagina projeto2.html*/
+.projeto img {
+    height: 300px;
+    width: 600px;
+    margin-left: 400px;
+}
+.formulario{
+    margin-top: 40px;
+    background-color: rgb(97, 204, 240);
+}
+.bota-formulario ,.formulario textarea, .formulario label , .formulario input{
+    margin-left: 530px;
+}
+.redes-sociais img {
+    height: 100px;
+    margin-left: 200px;
+}
+footer{
+    text-align: center;
+}
+footer p {
+    margin-bottom: 20px;
 }
