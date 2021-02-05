@@ -4,9 +4,36 @@
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(188, 229, 243);
 }
-
+header{
+    margin-bottom: 30px;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin: auto;
+}
+li{
+    float: left;
+    margin-left: 100px;
+}
+li a{
+    display: inline;
+    color: white;
+    text-align: center;
+    padding: 60px;
+    font-size: 30px;
+    text-decoration: none;
+}
+li a:hover{
+    background-color: rgb(99, 205, 240);
+}
 .foto-minha{
     height: 100px;
     width: 100px;
     border-radius: 100px;
+}
+main{
+    background-color: #eceaea;
 }
