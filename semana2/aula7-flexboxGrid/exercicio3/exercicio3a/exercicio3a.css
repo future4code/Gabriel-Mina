@@ -9,11 +9,11 @@ body {
 #main-container{
     display: flex;
     flex-direction: column;
-    height: 100vh;    
+    height: 100%;    
 }
 #top-container{
     display: flex;
-    height: 70px;
+    height: 10%;
     flex-direction: row;
     justify-content: space-between;
 } 
@@ -21,7 +21,7 @@ body {
 .green-background {
     background-color: green;
     display: flex;
-    width: 20%;
+    flex-grow: 1;
     justify-content: center;
     align-items: center; 
     
@@ -30,7 +30,7 @@ body {
 .yellow-background {
     background-color: yellow;
     display: flex;
-    width: 80%;
+    flex-grow: 5;
     justify-content: center;
     align-items: center; 
 }
@@ -38,46 +38,48 @@ body {
 .pink-background {    
     background-color: fuchsia;
     display: flex;
-    flex-grow: 1;
+    flex-grow: 2;
     align-items: center;
     justify-content: center;
 }
-
 #middle-container{
     display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-}
+    flex: 1;
+} 
 #content2{
     display: flex;
+    flex-grow: 2;
 }
 .blue-background {
     background-color: blue;
-    display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
 }
 #blank{
     display: flex;
+    flex-grow: 1;
 }
 #vertical-middle-container{
     display: flex;
-    flex-flow: column wrap;
-    flex:2;
+    flex-grow: 1;
+    flex-direction: column;
 }
-#image , #extra{
-    flex: 1;
+#extra , #image{
     display: flex;
+    flex-grow: 1;
 }
 .red-background {
     background-color: red;
     display: flex;
+    flex-grow:1 ;
     align-items: center;
     justify-content: center;
 }
 .lightgreen-background {
     background-color: lightgreen;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
 }
@@ -89,3 +91,92 @@ body {
     justify-content: center;
     align-items: center;    
 }
+/*
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    color: white;
+}
+​
+div div {
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self: stretch;
+}
+​
+#main-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+​
+#top-container {
+	height: 40px;
+}
+​
+#middle-container {
+	flex-grow: 1;
+}
+​
+#blank {
+	flex-grow: 1;
+}
+​
+#vertical-middle-container {
+	flex-grow: 1;
+	flex-direction: column;
+}
+​
+#content2 {
+	flex-grow: 2;
+}
+​
+#image {
+	flex-grow: 1;
+}
+​
+#extra {
+	flex-grow: 1;
+}
+​
+​
+.green-background {
+  background-color: green;
+	flex-grow: 1;
+}
+​
+.yellow-background {
+  background-color: yellow;
+	flex-grow: 4;
+}
+​
+.pink-background {
+    background-color: fuchsia;
+		flex-grow: 2;
+}
+​
+.blue-background {
+  background-color: blue;
+	flex-grow: 1;
+}
+​
+.red-background {
+  background-color: red;
+	flex-grow: 1;
+}
+​
+.lightgreen-background {
+  background-color: lightgreen;
+	flex-grow: 1;
+}
+​
+.purple-background {
+  background-color: purple;
+	height: 40px;
+	flex: 1;
+}
+*/
