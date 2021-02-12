@@ -1,0 +1,123 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    border: 1px solid black;
+    display: flex;
+}
+#main-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#first-block {
+    background-color: red;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+    
+}
+#columas1{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.blue-block {
+    background-color: blue;
+    width: 30%;
+}
+
+.yellow-block {
+    background-color: yellow;
+    width: 30%;
+}
+
+.green-block {
+    background-color: green;
+    width: 30%;
+}
+.green-block , .yellow-block , .blue-block{
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    margin: 1px 16px;
+}
+#columas2{
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    margin: 16px 0;
+}
+.black-block {
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 50%;
+    margin: 0 6px;
+    align-items: center;
+    justify-content: center;
+}
+#columas3{
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-between;    
+}
+.white-block {
+    background-color: white;
+    margin: 0 16px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+    @media screen and (min-width: 320px) and (max-width: 420px){    
+        #columas3{
+            flex-direction: column;
+        }
+        #columas2{
+            flex-direction: column;
+            align-items: center;
+        }
+        #columas1{
+            flex-direction: column;
+            
+        }
+        
+        .blue-block , .yellow-block ,.green-block {
+            width: 100%;
+        }
+         
+        .black-block{
+            width: 100%;
+        }
+    }
+    @media screen and (min-width : 421px) and (max-width : 800px) {
+        #columas3{
+            flex-wrap:wrap ;
+        }
+        .blue-block {
+            width: 40%;
+        }
+        .yellow-block {
+            width: 40%;
+        } 
+        .green-block {
+            width: 80%;
+        } 
+        .white-block:nth-of-type(1){
+            width: 40%;
+        }
+        .white-block:nth-of-type(2){
+            width: 40%;
+        }
+        .white-block:last-of-type{
+            width: 100%;
+        }   
+        
+    }
+    
