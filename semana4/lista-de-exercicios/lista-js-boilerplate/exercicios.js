@@ -102,12 +102,49 @@ function retornaNNumerosPares(n) {
 
 function checaTriangulo(a, b, c) {
   // implemente sua lógica aqui
+  let equilatero;
+  let isosceles;
+  let escaleno;
+  let arrayTriangulos  = []
+ if(a === b && b === c && c ===a){
+    equilatero = "Equilátero";
+ }else if(a === b && a === c){
+    isosceles = "Isósceles";
+ }else{
+   escaleno = "Escaleno"
+ }
+ 
+ 
 }
 
 // Exercício 9
 
 function comparaDoisNumeros(num1, num2) {
    // implemente sua lógica aqui
+   let maior = 0;
+   let divisao;
+   if(num1 > num2){
+      maior = num1;
+      menor = num2;
+   }else{
+      maior = num2;
+      menor = num1;
+   }
+
+   if(maior % menor == 1){
+      divisao = false;
+   }
+   divisao = true;
+
+   let dif = maior -  menor;
+   
+
+   const comparacao = {
+      maiorNumero:maior,
+      maiorDivisivelporMenor:divisao,
+      diferenca :dif
+   }
+   return comparacao;
 }
 
 // Exercício 10
