@@ -37,13 +37,20 @@ function retornaNumerosPares (array) {
 
 function retornaMaiorNumero(array) {
    // implemente sua lógica aqui
-
+   let maior = 0;
+   array.forEach((arrayMaior)=>{
+      if(arrayMaior > maior){
+         maior = arrayMaior;
+      }
+   })
+   return maior;
 }
 
 //Exercício 5
 
 function retornaQuantidadeElementos (array) {
    // implemente sua lógica aqui
+   return array.length;
 
 }
 
@@ -51,6 +58,13 @@ function retornaQuantidadeElementos (array) {
 
 function retornaExpressoesBooleanas() {
    // implemente sua lógica aqui
+   const booleano1 = true
+   const booleano2 = false
+   const booleano3 = !booleano2 
+   const booleano4 = !booleano3 
+
+
+   
 }
 
 //Exercício 7
