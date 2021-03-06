@@ -248,30 +248,65 @@ const arrayDePessoas = [
 
 function maioresDe18(arrayDePessoas) {
    // implemente sua lógica aqui
+   let maiores = [];
+   arrayDePessoas.filter((maioresIdade) =>{
+      if(maioresIdade.idade > 18){
+         maiores.push(maioresIdade);
+      }
+   })
+   return (maiores);
 }
 
 // Exercício 16, letra B
 
 function menoresDe18(arrayDePessoas) {
    // implemente sua lógica aqui
+   let menores = [];
+   arrayDePessoas.filter((menoresIdade) =>{
+      if(menoresIdade.idade < 18){
+         menores.push(menoresIdade);
+      }
+   })
+   return (menores);
+
 }
 
 // Exercício 17, letra A
 
 function multiplicaArrayPor2(array) {
    // implemente sua lógica aqui
+   let novoArray = [];
+   for(let i = 0 ; i < array.length ; i++){
+      novoArray.push(array[i]*2);
+   }
+   return (novoArray);
 }
 
 // Exercício 17, letra B
 
 function multiplicaArrayPor2S(array) {
   // implemente sua lógica aqui
+  let novoArray = [];
+   for(let i = 0 ; i < array.length ; i++){
+      novoArray.push((array[i]*2).toString());
+   }
+  return (novoArray);
 }
 
 // Exercício 17, letra C
 
 function verificaParidade(array) {
    // implemente sua lógica aqui
+   let novoArray = [];
+   for(let i = 0 ; i < array.length ; i++){
+      if(array[i] % 2 == 0){
+         novoArray.push((array[i]).toString() + " é par");
+      }else{
+         novoArray.push((array[i]).toString() + " é ímpar");
+      }
+   
+   }
+   return(novoArray);
 }
 
 // Exercício 18
@@ -289,6 +324,13 @@ const pessoas = [
 
 function retornaPessoasAutorizadas() {
    // implemente sua lógica aqui
+   const pessoasPermitidas = [];
+   pessoas.filter((permitidas) => {
+      if(permitidas.altura >= 1.5 && (permitidas.idade > 14 && permitidas.idade < 60)){
+         pessoasPermitidas.push(permitidas);
+      }
+   })
+  return(pessoasPermitidas);
 }
 
 
@@ -296,6 +338,13 @@ function retornaPessoasAutorizadas() {
 
 function retornaPessoasNaoAutorizadas() {
    // implemente sua lógica aqui
+  const pessoasNPermitidas = [];
+  pessoas.filter((naoPermitido) =>{
+   if(1.5 >= naoPermitido.altura && (14 > naoPermitido.idade && 60 > naoPermitido.idade)){
+      pessoasNPermitidas.push(naoPermitido);
+   }
+  });
+  return (pessoasNPermitidas);
 }
 
 //Exercício 19
