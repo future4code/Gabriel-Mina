@@ -340,11 +340,14 @@ function retornaPessoasNaoAutorizadas() {
    // implemente sua lógica aqui
   const pessoasNPermitidas = [];
   pessoas.filter((naoPermitido) =>{
-   if(1.5 >= naoPermitido.altura && (14 > naoPermitido.idade && 60 > naoPermitido.idade)){
+   if(1.5 >= naoPermitido.altura ){
+      pessoasNPermitidas.push(naoPermitido);
+   }else if(naoPermitido.idade > 14 && naoPermitido.idade < 60){
       pessoasNPermitidas.push(naoPermitido);
    }
   });
-  return (pessoasNPermitidas);
+//   && (14 > naoPermitido.idade && 60 > naoPermitido.idade)
+  console.log(pessoasNPermitidas);
 }
 
 //Exercício 19
