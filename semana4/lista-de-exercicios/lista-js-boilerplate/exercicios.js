@@ -223,6 +223,16 @@ function criaRetangulo(lado1, lado2) {
 
 function anonimizaPessoa(pessoa) {
    // implemente sua lógica aqui
+
+   // erro no arquivo teste.js ao instanciar o endereco = pessoa.endereco !!!!!!!!!!!!!!!!!!!!!!!!
+
+   const pessoaAnonima = {
+      nome:"ANÔNIMO",
+      idade: pessoa.idade,
+      email: pessoa.email,
+      // endereco = pessoa.endereco
+   }
+   return (pessoaAnonima);
 }
 
 // Exercício 16
