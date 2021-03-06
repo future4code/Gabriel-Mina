@@ -346,8 +346,7 @@ function retornaPessoasNaoAutorizadas() {
       pessoasNPermitidas.push(naoPermitido);
    }
   });
-//   && (14 > naoPermitido.idade && 60 > naoPermitido.idade)
-  console.log(pessoasNPermitidas);
+  return(pessoasNPermitidas);
 }
 
 //Exercício 19
@@ -360,7 +359,39 @@ function retornaPessoasNaoAutorizadas() {
 
 function retornaEmailConsulta() {
   // implemente sua lógica aqui
+   const mensagem = [];
+   let mensagemCancelada;
+   let mensagemNaoCancelada;
+   consultas.filter((filtro) =>{
+      if(filtro.cancelada == false){
 
+         if(filtro.genero == "masculino"){
+            mensagemCancelada = `Olá, Sr.${filtro.nome}. Estamos enviando esta mensagem para
+          lembrá-lo da sua consulta no dia ${filtro.dataDaConsulta}. Por favor, acuse
+         o recebimento deste e-mail.`;
+         mensagem.push(mensagemCancelada);
+         }else{
+            mensagemCancelada = `Olá, Sra.${filtro.nome}. Estamos enviando esta mensagem para
+          lembrá-la da sua consulta no dia ${filtro.dataDaConsulta}. Por favor, acuse
+         o recebimento deste e-mail.`;
+         mensagem.push(mensagemCancelada);
+         }
+      }else{
+            if(filtro.genero == "masculino"){
+               mensagemNaoCancelada = `Olá, Sr.${filtro.nome}. Estamos enviando esta mensagem para
+               lembrá-lo da sua consulta no dia ${filtro.dataDaConsulta}. Por favor, acuse
+               o recebimento deste e-mail.`;
+               mensagem.push(mensagemNaoCancelada);
+            }else{
+               mensagemNaoCancelada = `Olá, Sra.${filtro.nome}. Estamos enviando esta mensagem para
+               lembrá-la da sua consulta no dia ${filtro.dataDaConsulta}. Por favor, acuse
+               o recebimento deste e-mail.`;
+               mensagem.push(mensagemNaoCancelada);
+            }
+      }
+   });
+
+   return(mensagem);
 }
 
 //Exercício 20
