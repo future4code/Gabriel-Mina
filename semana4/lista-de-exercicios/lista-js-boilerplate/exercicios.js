@@ -186,7 +186,6 @@ function filmeFavorito() {
       diretor: 'David Frankel',
       atores: ['Meryl Streep', 'Anne Hathaway', 'Emily Blunt', 'Stanley Tucci']
    }
-
   return (nomes);
 }
 
@@ -200,7 +199,6 @@ function imprimeChamada() {
       diretor: 'David Frankel',
       atores: ['Meryl Streep', 'Anne Hathaway', 'Emily Blunt', 'Stanley Tucci']
    }
-
    return `Venha assistir ao filmeVenha assistir ao filme ${filme.nome},
           de ${filme.ano}, 
           dirigido por ${filme.diretor} 
@@ -212,6 +210,13 @@ function imprimeChamada() {
 
 function criaRetangulo(lado1, lado2) {
    // implemente sua lógica aqui
+   const triangulo = {
+      largura: (lado1),
+      altura: (lado2), 
+      perimetro: (2 * (lado1 + lado2)),
+      area: (lado1 * lado2)
+   }
+   return (triangulo);
 }
 
 // Exercício 15
