@@ -151,12 +151,19 @@ function comparaDoisNumeros(num1, num2) {
 
 function segundoMaiorEMenor(array) {
    // implemente sua lógica aqui
+   
 }
 
 //Exercício 11
 
 function ordenaArray(array) {
    // implemente sua lógica aqui
+   // [20, 13, -1, 2, 5, 49, -40, 10, 70, 5]
+   
+  array.sort((a,b)=>{
+   return a - b ;
+  });
+  return array;
 }
 
 // Exercício 12
