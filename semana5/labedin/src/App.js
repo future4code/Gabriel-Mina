@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
+import CardPequeno from './components/CardPequeno/cardPequeno';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
+
 
 function App() {
   return (
@@ -9,17 +11,24 @@ function App() {
       <div className="page-section-container">
         <h2>Dados pessoais</h2>
         <CardGrande 
-          imagem="https://uploads-ssl.webflow.com/5d640f4558306be99cf47a0e/5dd57846babb597b77c6bb1d_PerfilFuture4_cor.png" 
-          nome="Astrodev" 
-          descricao="Oi, eu sou o Astrodev. Sou o chefe dos alunos da Labenu. Adoro pedir e-mails na sexta-feira e esperar os alunos responderem só para responder com uma bronca e dar mais trabalho para eles."
+          imagem="https://media-exp1.licdn.com/dms/image/C4D03AQFNTRixTlCZOA/profile-displayphoto-shrink_800_800/0/1592835168420?e=1620864000&v=beta&t=G8J2CfFLOhcnfT_hAJL5X85ciWCNY072boqV0fIxjeU" 
+          nome="Gabriel Mina da Silva" 
+          descricao="Oi, eu sou o Gabriel.Sou estudante da Labenu , apaixonado por tecnologia e os resultados que ela promove para a sociedade. Busco crescimento profissional na área de desenvolvimento back-end e testes automatizados."
         />
         
         <ImagemButton 
           imagem="https://image.flaticon.com/icons/png/512/117/117472.png" 
           texto="Ver mais"
         />
+        
       </div>
-
+      <div className="page-section-container">
+          <CardPequeno 
+            nome="EMAIL:gabrielmina118@gmail.com"
+            descricao="Endereço: Rua das acerolas,90- Caçapava"
+          />
+      </div>
+      
       <div className="page-section-container">
         <h2>Experiências profissionais</h2>
         <CardGrande 

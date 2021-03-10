@@ -1,0 +1,15 @@
+.info-pessoal{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.info-pessoal p {
+    font-weight: bold;
+}
+
+.informacoes{
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
