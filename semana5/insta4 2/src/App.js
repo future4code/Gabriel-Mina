@@ -6,7 +6,7 @@ class App extends React.Component {
   render() {
     return (
       <div className={'app-container'}>
-        <Post
+        {/* <Post
           nomeUsuario={'paulinha'}
           fotoUsuario={'https://picsum.photos/50/50'}
           fotoPost={'https://picsum.photos/200/150'}
@@ -20,7 +20,8 @@ class App extends React.Component {
             nomeUsuario={'Anderson'}
             fotoUsuario={'https://www.einerd.com.br/wp-content/uploads/2017/10/Naruto_Uzumaki-890x466.jpg'}
             fotoPost={'https://i1.wp.com/narutokonoha.com/wp-content/uploads/2019/10/Assista-a-luta-completa-de-Naruto-vs-Pain-online.jpg?w=1280&ssl=1'}
-        />
+        /> */}
+        <Post />
       </div>
     );
   }
