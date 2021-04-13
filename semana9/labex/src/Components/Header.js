@@ -11,7 +11,6 @@ const Principal = styled.div`
     flex:1;
     align-items:center;
     font-size:50px;
-    width:100vw;
     background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #000000;
     color:#ffffff;
     justify-content:space-between;
@@ -22,7 +21,6 @@ const Logo = styled.div`
     margin-left:4px;
 `
 const ImagemLogo = styled.img`
-    width:100px;
     height:100px;
     background-color:#ffffff;
     border:2px solid black;

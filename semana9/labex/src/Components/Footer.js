@@ -19,7 +19,7 @@ const TituloItensFooter = styled.h2`
 const ItensPrincipalFooter = styled.div`
     display:flex;
     justify-content:space-around;
-    border:1px solid white;
+    border-bottom: 1px solid #ffffff;
 `
 const RedesSociais = styled.div`
     display:flex;
