@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router';
 import styled from 'styled-components'
+import Button from '@material-ui/core/Button';
 import marte from '../img/marte.jpg'
 import plutao from '../img/plutao.jpg'
 import terra from '../img/terra.jpg'
@@ -29,8 +30,8 @@ const ListagemViagem = styled.div`
     width:90vw;
     min-height:50px;
     min-width:100px;
-    background-color:#C4C4C4;
     display:flex;
+    justify-content:space-between;
     align-items:center;
 `
 const ExplorePlanetas = styled.div`
@@ -105,9 +106,18 @@ export default function HomePage() {
         <>
             <Container>
                 <ListagemViagem>
-                    <TituloContainer>Listagem de viagem</TituloContainer>
-                    <input />
-                    <button>Buscar</button>
+                    <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"                                
+                                onClick={goToTripList}
+                            >Ver viagem</Button>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"                                
+                                onClick={goToAdmin}
+                            >Àrea do admin</Button>
                 </ListagemViagem>
                 <ExplorePlanetas>
                     <TituloContainer>Explore alguns planetas</TituloContainer>
@@ -147,10 +157,6 @@ export default function HomePage() {
                         </PlanetasFilhoInspiracoes>          
                     </Planetas>
                 </Inspiracoes>
-                <div>
-                    <button onClick={goToTripList}>Ver viagem</button>
-                    <button onClick={goToAdmin}>Àrea do admin</button>
-                </div>
             </Container>
         </>
     );
