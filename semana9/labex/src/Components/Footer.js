@@ -1,4 +1,10 @@
 import styled from 'styled-components'
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import EmailIcon from '@material-ui/icons/Email';
+import PhoneIcon from '@material-ui/icons/Phone';
+
 
 const Principal = styled.div`
     display:flex;
@@ -25,6 +31,11 @@ const RedesSociais = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
+`
+const RedesSociaisIcones = styled.div`
+    display:flex;
+    justify-content:space-between;
+    width:500px;
 `
 export default function Footer() {
     return (
@@ -56,9 +67,15 @@ export default function Footer() {
                 </ItensFooter>
             </ItensPrincipalFooter>
             <RedesSociais>
-                <p>Lorem ipsium Lorem ipsium Lorem ipsium Lorem ipsium Lorem ipsium</p>
+                <p>Labex Terra -  Operadora e Agência de Viagens Interplanetárias S.A - CNPJ: 99.999.999/0001-19 - Rua dos bobos, 0 | Planeta terra - CEP : 09080-370 </p>
                 <p>LABEX</p>
-                <p>RedesSociais</p>
+                <RedesSociaisIcones>
+                    <FacebookIcon />
+                    <TwitterIcon />
+                    <InstagramIcon />
+                    <EmailIcon />
+                    <PhoneIcon />
+                </RedesSociaisIcones>
                 <p>&copy; Todos os direitos autorais para Labex- LTDA</p>
             </RedesSociais>
         </Principal>

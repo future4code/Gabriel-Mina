@@ -16,7 +16,7 @@ const TamanhoMain = styled.div`
 export default function App() {
   return (
     <Principal>
-      <Header />
+      <Header/>
         <TamanhoMain>
           <Router />
         </TamanhoMain>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import HomePage from '../Pages/HomePage';
+import HomePage from '../Pages/homepage/HomePage';
 import ListTripPage from '../Pages/ListTripsPage';
 import AplicationFormPage from '../Pages/ApplicationFormPage';
 import LoginPage from '../Pages/LoginPage';
@@ -38,9 +38,6 @@ export default function Router() {
                     <CreateTripPage />
                 </Route>
 
-                <Route exact path="/admin/trips/create">
-                    <HomePage />
-                </Route>
 
                 <Route exact path="/">
                     <HomePage />
