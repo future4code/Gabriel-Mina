@@ -13,7 +13,7 @@ export default function Router() {
     return (
         <BrowserRouter>
             <Switch>
-                
+
                 <Route exact path="/trip/list">
                     <ListTripPage />
                 </Route>
@@ -31,11 +31,11 @@ export default function Router() {
                 </Route>
 
                 <Route exact path="/admin/trips/create">
-                    <TripDetailPage />
+                    <CreateTripPage />
                 </Route>
 
                 <Route exact path="/admin/trips/:id">
-                    <CreateTripPage />
+                    <TripDetailPage />
                 </Route>
 
 

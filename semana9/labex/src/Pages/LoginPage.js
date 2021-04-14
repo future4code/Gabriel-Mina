@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 import styled from 'styled-components'
+import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import viagem from '../img/viagem.jpg'
-    const Conteudo = styled.div`
+import axios from 'axios';
+import UrlBase from '../Constants/Constants'
+
+
+const Conteudo = styled.div`
     display:flex;
     flex:2;
     min-height:100px;
@@ -41,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-        width: '100%', 
+        width: '100%',
         marginTop: theme.spacing(1),
     },
     submit: {
@@ -53,11 +57,35 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LoginPage() {
     const classes = useStyles();
-
     const history = useHistory();
-    
+
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+
     const goTohome = () => {
         history.push("/")
+    }
+
+    const inputName = (e) => {
+        setName(e.target.value);
+    }
+    const inputPassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const login = async () => {
+        const body = {
+            "email": name,
+            "password": password
+        }
+
+        try {
+            const response = await axios.post(`${UrlBase}gabriel-mina-cruz/login`, body);
+            window.localStorage.setItem("token",response.data.token)
+            history.push("/admin/trips/list")
+        } catch (erro) {
+            alert("Email ou senha incorretos!")
+        }
     }
 
     return (
@@ -83,7 +111,9 @@ export default function LoginPage() {
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
-                                autoFocus
+                                autoFocus                        
+                                value={name}
+                                onChange={inputName}
                             />
                             <TextField
                                 variant="outlined"
@@ -95,23 +125,16 @@ export default function LoginPage() {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
+    
+                                value={password}
+                                onChange={inputPassword}
                             />
 
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
-                            >
+                            <Button variant="outlined" onClick={login}>
                                 Entrar
                             </Button>
                             <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
+                                variant="outlined"
                                 onClick={goTohome}
                             >
                                 voltar
