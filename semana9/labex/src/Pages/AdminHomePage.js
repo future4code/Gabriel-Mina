@@ -57,13 +57,6 @@ export default function AdminHomePage() {
         history.push("/admin/trips/create")
     }
 
-    const goToHome = () => {
-        history.push("/")
-    }
-
-    const goToLogin = () => {
-        history.push("/login")
-    }
 
     const logOut = () => {
         window.localStorage.removeItem("token");
@@ -109,7 +102,7 @@ export default function AdminHomePage() {
     return (
         <Conteudo>
             <Botoes>
-                <Button variant="outlined" color="primary" onClick={goToHome}> voltar</Button>
+                <Button variant="outlined" color="primary" onClick={logOut}> voltar</Button>
                 <Button variant="outlined" color="primary" onClick={goToTripCreate}> Criar Viagem</Button>
                 <Button variant="outlined" color="primary" onClick={logOut}> Logout</Button>
             </Botoes>
