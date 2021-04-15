@@ -69,9 +69,10 @@ export default function ListTripsPage() {
     useEffect(() => {
         getTripList();
     }, [])
+    
     const listTripScreen = listTrip.map((trips) => {
         return (
-            <Card className={classes.root}>
+            <Card className={classes.root} >
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}

@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
 import { ProtectedPage } from '../Hooks/ProtectedPage';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import  {logOut} from '../Routes/Cordinator'
+import AdminCard from '../Components/AdminCard';
 import axios from 'axios';
 import UrlBase from '../Constants/Constants'
-import festaplaneta from '../img/festaplaneta.jpg'
 
 
 const Conteudo = styled.div`
@@ -36,31 +31,17 @@ const ListaDeViagens = styled.div`
     margin:10px auto;
     min-height:400px;
 `
-const useStyles = makeStyles({
-    root: {
-        maxWidth: 345,
-        border: '1px solid black'
-    },
-    media: {
-        height: 140,
-    },
-});
+
+
 export default function AdminHomePage() {
     ProtectedPage();
 
-    const classes = useStyles();
     const history = useHistory();
 
     const [listTrip, setListTrip] = useState([])
 
     const goToTripCreate = () => {
         history.push("/admin/trips/create")
-    }
-
-
-    const logOut = () => {
-        window.localStorage.removeItem("token");
-        history.push("/login")
     }
 
 
@@ -78,33 +59,15 @@ export default function AdminHomePage() {
     }, [])
 
     const listTripScreen = listTrip.map((trips) => {
-        return (
-            <Card className={classes.root}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={festaplaneta}
-                        title="festa Planeta"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {trips.name}
-                    </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {trips.description}
-                    </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        )
+        return <AdminCard key={trips.id} name={trips.name} id={trips.id} descricao={trips.description}/>
     })
 
     return (
         <Conteudo>
             <Botoes>
-                <Button variant="outlined" color="primary" onClick={logOut}> voltar</Button>
-                <Button variant="outlined" color="primary" onClick={goToTripCreate}> Criar Viagem</Button>
-                <Button variant="outlined" color="primary" onClick={logOut}> Logout</Button>
+                <Button variant="outlined" color="primary" onClick={()=>logOut(history)}> voltar</Button>
+                <Button variant="outlined" color="primary" onClick={()=>goToTripCreate(history)}> Criar Viagem</Button>
+                <Button variant="outlined" color="primary" onClick={()=>logOut(history)}> Logout</Button>
             </Botoes>
             <ListaDeViagens>
                 {listTripScreen}

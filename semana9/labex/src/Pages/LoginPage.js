@@ -21,7 +21,13 @@ const Conteudo = styled.div`
     min-height:100px;
     margin:10px;
     `
-
+const Botoes = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:10px auto;
+    width:60%;
+`
 const useStyles = makeStyles((theme) => ({
     root: {
         height: '100vh',
@@ -81,7 +87,7 @@ export default function LoginPage() {
 
         try {
             const response = await axios.post(`${UrlBase}gabriel-mina-cruz/login`, body);
-            window.localStorage.setItem("token",response.data.token)
+            window.localStorage.setItem("token", response.data.token)
             history.push("/admin/trips/list")
         } catch (erro) {
             alert("Email ou senha incorretos!")
@@ -111,7 +117,7 @@ export default function LoginPage() {
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
-                                autoFocus                        
+                                autoFocus
                                 value={name}
                                 onChange={inputName}
                             />
@@ -125,20 +131,13 @@ export default function LoginPage() {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
-    
                                 value={password}
                                 onChange={inputPassword}
                             />
-
-                            <Button variant="outlined" onClick={login}>
-                                Entrar
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                onClick={goTohome}
-                            >
-                                voltar
-                            </Button>
+                            <Botoes>
+                                <Button variant="outlined" onClick={goTohome}>voltar</Button>
+                                <Button variant="outlined" onClick={login}>Entrar</Button>
+                            </Botoes>
                         </form>
                     </div>
                 </Grid>
