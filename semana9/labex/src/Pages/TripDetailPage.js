@@ -65,7 +65,6 @@ export default function CreateTripPage() {
             });
             setTrip(response.data.trip);
             setCandidate(response.data.trip.candidates)
-            console.log(response.data.trip.candidates);
         }catch(erro){
             console.log("Erro",erro);
         }

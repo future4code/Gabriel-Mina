@@ -1,4 +1,3 @@
-import { goToTripDetailsPage } from '../Routes/Cordinator'
 import { makeStyles } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -31,7 +30,7 @@ const CandidateCard = (props) => {
     const { name, country, applicationText } = props;
 
     const classes = useStyles();
-    const history = useHistory();
+
 
     return (
         <Card className={classes.root}>
