@@ -41,6 +41,7 @@ const CandidatosAprovados = styled.div`
     flex:1;
     background-color:lightgrey;
     align-items:center;
+    border:1px solid black;
     flex-direction:column;
     font-weight:bold;
     font-size:30px;

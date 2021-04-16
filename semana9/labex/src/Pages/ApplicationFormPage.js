@@ -79,9 +79,9 @@ export default function ApplicationFormPage() {
         }
     }
 
-    const ApplyToTrip = async(body,tripId) =>{
+    const ApplyToTrip = async() =>{
         try {
-            const response = await axios.post(`${UrlBase}gabriel-mina-cruz/trips/${tripId}/apply`, body)
+            const response = await axios.post(`${UrlBase}gabriel-mina-cruz/trips/${tripId}/apply`, form)
             alert(response.data.message)
         } catch (erro) {
             console.log("Erro: ", erro);
@@ -90,7 +90,7 @@ export default function ApplicationFormPage() {
     
     const handleClick = (e) => {
         e.preventDefault();
-        ApplyToTrip(form,tripId);
+        ApplyToTrip();
         resetForm();        
     }
 
