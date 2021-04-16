@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
 import { ProtectedPage } from '../Hooks/ProtectedPage';
-import  {logOut} from '../Routes/Cordinator'
+import  {logOut,goToCreateTripPage} from '../Routes/Cordinator'
 import AdminCard from '../Components/AdminCard';
 import axios from 'axios';
 import UrlBase from '../Constants/Constants'
@@ -40,11 +40,6 @@ export default function AdminHomePage() {
 
     const [listTrip, setListTrip] = useState([])
 
-    const goToTripCreate = () => {
-        history.push("/admin/trips/create")
-    }
-
-
     const getTripList = async () => {
         try {
             const response = await axios.get(`${UrlBase}gabriel-mina-cruz/trips`);
@@ -66,7 +61,7 @@ export default function AdminHomePage() {
         <Conteudo>
             <Botoes>
                 <Button variant="outlined" color="primary" onClick={()=>logOut(history)}> voltar</Button>
-                <Button variant="outlined" color="primary" onClick={()=>goToTripCreate(history)}> Criar Viagem</Button>
+                <Button variant="outlined" color="primary" onClick={()=>goToCreateTripPage(history)}> Criar Viagem</Button>
                 <Button variant="outlined" color="primary" onClick={()=>logOut(history)}> Logout</Button>
             </Botoes>
             <ListaDeViagens>

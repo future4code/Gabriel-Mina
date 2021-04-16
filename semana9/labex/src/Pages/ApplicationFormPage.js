@@ -6,6 +6,7 @@ import axios from 'axios';
 import UrlBase from '../Constants/Constants';
 import { countries } from '../Constants/Country';
 import { useForm } from '../Hooks/useForm';
+import {goToListTripsPage} from '../Routes/Cordinator'
 
 
 const Conteudo = styled.div`
@@ -67,7 +68,7 @@ export default function ApplicationFormPage() {
     const [listTrip, setListTrip] = useState([])
     const [tripId, setTripId] = useState("");
 
-    const [form, onchange] = useForm(initialForm)
+    const [form, onchange,resetForm] = useForm(initialForm)
 
     const getTripList = async () => {
         try {
@@ -78,20 +79,19 @@ export default function ApplicationFormPage() {
         }
     }
 
-    const ApplyToTrip = async () => {
-        console.log(form);
+    const ApplyToTrip = async(body,tripId) =>{
         try {
-            const response = await axios.post(`${UrlBase}gabriel-mina-cruz/trips/${tripId}/apply`, form)
+            const response = await axios.post(`${UrlBase}gabriel-mina-cruz/trips/${tripId}/apply`, body)
             alert(response.data.message)
         } catch (erro) {
             console.log("Erro: ", erro);
         }
-
     }
-
+    
     const handleClick = (e) => {
         e.preventDefault();
-        ApplyToTrip();
+        ApplyToTrip(form,tripId);
+        resetForm();        
     }
 
     const onchangeTrip = (e) => {
@@ -100,7 +100,7 @@ export default function ApplicationFormPage() {
 
     const listTripsScreen = listTrip.map((trips) => {
         return (
-            <option key={trips.name} value={trips.name}>{trips.name}</option>
+            <option key={trips.id} value={trips.id}>{trips.name}</option>
         )
     })
 
@@ -127,10 +127,41 @@ export default function ApplicationFormPage() {
                     <option value={""} disabled>Escolha um Pais</option>
                     {listCountryScreen}
                 </SelectForm>
-                <InputForm name="name" type={"text"} placeholder={"Nome"} value={form.name} onChange={onchange} required />
-                <InputForm placeholder={"Idade"} type={"number"} name={"age"} value={form.age} onChange={onchange} required />
-                <InputForm name="applicationText" type={"text"} placeholder={"texto de Candidatura"} value={form.applicationText} onChange={onchange} required />
-                <InputForm name="profession" type={"text"} placeholder={"Profissão"} value={form.profession} onChange={onchange} required />
+                <InputForm 
+                    name="name"
+                    type={"text"}
+                    placeholder={"Nome"} 
+                    value={form.name} 
+                    onChange={onchange} 
+                    pattern={"^.{3,}$"}
+                    title={"O nome deve ter no mínimo 3 caracteres"}
+                    required />
+                <InputForm 
+                    placeholder={"Idade"} 
+                    type={"number"} 
+                    name={"age"} 
+                    value={form.age} 
+                    onChange={onchange} 
+                    min={18}
+                    required />
+                <InputForm 
+                    name="applicationText" 
+                    type={"text"} 
+                    placeholder={"texto de Candidatura"} 
+                    value={form.applicationText} 
+                    onChange={onchange} 
+                    pattern={"^.{30,}$"}
+                    title={"O texto deve ter no mínimo 30 caracteres"}
+                    required />
+                <InputForm
+                     name="profession" 
+                     type={"text"} 
+                     placeholder={"Profissão"} 
+                     value={form.profession} 
+                     onChange={onchange} 
+                     pattern={"^.{10,}$"}
+                     title={"A profissão deve ter no mínimo 10 caracteres"}
+                     required />
                 <Botoes>
                     <Button variant="outlined" color="primary" onClick={history.goBack}> voltar</Button>
                     <Button variant="outlined" color="primary" type="submit"> enviar</Button>
