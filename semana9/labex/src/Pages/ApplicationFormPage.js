@@ -6,7 +6,7 @@ import axios from 'axios';
 import UrlBase from '../Constants/Constants';
 import { countries } from '../Constants/Country';
 import { useForm } from '../Hooks/useForm';
-import {goToListTripsPage} from '../Routes/Cordinator'
+import useRequest from '../Hooks/useRequest'
 
 
 const Conteudo = styled.div`
@@ -65,20 +65,12 @@ const initialForm = {
 export default function ApplicationFormPage() {
 
     const history = useHistory();
-    const [listTrip, setListTrip] = useState([])
     const [tripId, setTripId] = useState("");
 
-    const [form, onchange,resetForm] = useForm(initialForm)
+    const [form, onchange,resetForm] = useForm(initialForm);
+    const [dataAllTrips] = useRequest("/trips",[]);
 
-    const getTripList = async () => {
-        try {
-            const response = await axios.get(`${UrlBase}gabriel-mina-cruz/trips`);
-            setListTrip(response.data.trips)
-        } catch (erro) {
-            console.log("erro", erro);
-        }
-    }
-
+    
     const ApplyToTrip = async() =>{
         try {
             const response = await axios.post(`${UrlBase}gabriel-mina-cruz/trips/${tripId}/apply`, form)
@@ -98,7 +90,7 @@ export default function ApplicationFormPage() {
         setTripId(e.target.value)
     }
 
-    const listTripsScreen = listTrip.map((trips) => {
+    const listTripsScreen = dataAllTrips.trips && dataAllTrips.trips.map((trips) => {
         return (
             <option key={trips.id} value={trips.id}>{trips.name}</option>
         )
@@ -110,10 +102,6 @@ export default function ApplicationFormPage() {
             <option key={countries} value={countries}>{countries}</option>
         )
     })
-
-    useEffect(() => {
-        getTripList();
-    }, [])
 
     return (
         <Conteudo>
