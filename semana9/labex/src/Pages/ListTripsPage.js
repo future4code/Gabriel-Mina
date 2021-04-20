@@ -58,7 +58,7 @@ export default function ListTripsPage() {
 
     const getTripList = async () => {
         try {
-            const response = await axios.get(`${UrlBase}gabriel-mina-cruz/trips`);
+            const response = await axios.get(`${UrlBase}/trips`);
             setListTrip(response.data.trips)
         } catch (erro) {
             console.log("erro", erro);
