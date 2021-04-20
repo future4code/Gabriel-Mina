@@ -86,10 +86,11 @@ export default function LoginPage() {
         }
 
         try {
-            const response = await axios.post(`${UrlBase}gabriel-mina-cruz/login`, body);
+            const response = await axios.post(`${UrlBase}/login`, body);
             window.localStorage.setItem("token", response.data.token)
             history.push("/admin/trips/list")
         } catch (erro) {
+            console.log(erro);
             alert("Email ou senha incorretos!")
         }
     }

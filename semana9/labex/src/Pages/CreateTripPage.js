@@ -89,7 +89,7 @@ export default function TripDetailPage() {
 
         try {
             const token = window.localStorage.getItem("token")
-            const response = await axios.post(`${UrlBase}gabriel-mina-cruz/trips`,body, {
+            const response = await axios.post(`${UrlBase}/trips`,body, {
                 headers: {
                     auth: token
                 }

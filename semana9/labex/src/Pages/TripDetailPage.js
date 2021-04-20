@@ -66,7 +66,7 @@ export default function CreateTripPage() {
     const getTripDetail = async () => {
         const token = window.localStorage.getItem("token");
         try {
-            const response = await axios.get(`${UrlBase}gabriel-mina-cruz/trip/${id}`, {
+            const response = await axios.get(`${UrlBase}/trip/${id}`, {
                 headers: {
                     Auth: token
                 }

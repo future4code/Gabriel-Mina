@@ -38,7 +38,7 @@ const CandidateCard = (props) => {
         }
         const token = window.localStorage.getItem("token")
         try{
-            await axios.put(`${UrlBase}gabriel-mina-cruz/trips/${idTrip}/candidates/${id}/decide`,body, {
+            await axios.put(`${UrlBase}/trips/${idTrip}/candidates/${id}/decide`,body, {
                 headers: {
                     auth: token
                 }
