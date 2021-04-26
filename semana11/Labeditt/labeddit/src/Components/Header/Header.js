@@ -25,10 +25,10 @@ export default function PrimarySearchAppBar() {
                         edge="end"
                         aria-label="account of current user"
                         aria-haspopup="true"
-                        onClick={()=> goToSingUp(history)}
                         color="inherit"
+                        onClick={()=> goToSingUp(history)}
                     >
-                        <AccountCircle />Login
+                        <AccountCircle />Cadastrar
                     </IconButton>
             </StyledTooBar>
         </AppBar>

@@ -1,14 +1,14 @@
 import React from 'react'
-import Button from '@material-ui/core/Button';
+import { ScreenContainer, LogoImagem} from './LoginStyle'
+import logo from '../../Assets/reddit.jpg'
+import LoginForm from './LoginForm';
 
 const Login = () => {
     return (
-        <div>
-            <h1>Login</h1>
-            <Button variant="contained" color="primary">
-               teste botao cor
-            </Button>
-        </div>
+        <ScreenContainer>
+            <LogoImagem src={logo} />
+            <LoginForm />
+        </ScreenContainer>
     )
 }
 export default Login;
