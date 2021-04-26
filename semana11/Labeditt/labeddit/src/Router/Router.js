@@ -5,10 +5,11 @@ import Login from '../Pages/Login/Login'
 import Post from '../Pages/Post/Post'
 import SingUp from '../Pages/SingUp/SingUp'
 import Erro404 from '../Assets/404.gif'
-
+import Header from '../Components/Header/Header'
 const Router = () => {
     return (
         <BrowserRouter>
+        <Header />
             <Switch>
                 <Route exact path="/">
                     <Login />
@@ -27,7 +28,7 @@ const Router = () => {
                 </Route>
 
                 <Route>
-                   <img src={Erro404} />
+                   <img src={Erro404}  alt={Erro404}/>
                 </Route>
 
             </Switch>
