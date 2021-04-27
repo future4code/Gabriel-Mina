@@ -3,8 +3,12 @@ import Button from '@material-ui/core/Button';
 import { Inputs, Buttons } from './LoginStyle'
 import useForm from '../../Hooks/useForm'
 import { TextField } from '@material-ui/core';
+import {login} from '../../Service/useRequestPost'
+import { useHistory } from 'react-router';
 
 const LoginForm = () => {
+
+    const history = useHistory();
 
     const initialState = {
         email: "",
@@ -15,8 +19,10 @@ const LoginForm = () => {
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-        console.log(form);
+        login(form,history);
     }
+
+    
 
     return (
         <Inputs>

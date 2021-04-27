@@ -3,8 +3,12 @@ import Button from '@material-ui/core/Button';
 import { Inputs, Buttons } from './SingUpStyle'
 import useForm from '../../Hooks/useForm'
 import { TextField } from '@material-ui/core';
+import {useHistory} from 'react-router-dom'
+import {createLogin} from '../../Service/useRequestPost'
 
 const SingUpForm = () => {
+
+    const history = useHistory();
 
     const initialState = {
         email: "",
@@ -16,8 +20,10 @@ const SingUpForm = () => {
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-        console.log(form);
+        createLogin(form,history);
     }
+
+    
 
     return (
         <Inputs>
