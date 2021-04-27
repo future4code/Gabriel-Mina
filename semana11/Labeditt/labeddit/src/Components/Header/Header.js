@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { StyledTooBar, StyedSearch} from './Styled'
 import InputBase from '@material-ui/core/InputBase';
@@ -8,9 +8,12 @@ import Button from '@material-ui/core/Button';
 import {goToSingUp,goToHomePage} from '../../Router/Coordinator'
 import {useHistory} from 'react-router-dom'
 
-export default function PrimarySearchAppBar() {
+const Header = () =>{
 
     const history = useHistory();
+
+    const token = localStorage.getItem("token")
+    const [logado,setLogado] =useState(token ? "Logout" :"Cadastrar")
 
     return (
         <AppBar position="static">
@@ -28,9 +31,10 @@ export default function PrimarySearchAppBar() {
                         color="inherit"
                         onClick={()=> goToSingUp(history)}
                     >
-                        <AccountCircle />Cadastrar
+                      {logado}
                     </IconButton>
             </StyledTooBar>
         </AppBar>
     );
 }
+export default Header;

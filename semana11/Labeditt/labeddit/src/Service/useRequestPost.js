@@ -9,7 +9,7 @@ export const login = async(body,history) =>{
         alert("Logado com sucesso")
         goToFeed(history)
     }catch(erro){
-        alert("Erro ao registar o login", erro.response.data.message)
+        alert(erro.response.data.message)
     }
 }
 
