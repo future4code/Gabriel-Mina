@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Toolbar from '@material-ui/core/Toolbar';
 
 
+
 export const StyledTooBar = styled(Toolbar)`
     display:flex;
     flex-direction:row;
@@ -9,8 +10,8 @@ export const StyledTooBar = styled(Toolbar)`
 
 `
 
-
 export const StyedSearch = styled.div`
+
      background-color: #ffffff;
      margin-right:20px;
      margin-left: 0px;

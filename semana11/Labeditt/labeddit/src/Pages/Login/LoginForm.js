@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from '@material-ui/core/Button';
 import { Inputs, Buttons } from './LoginStyle'
 import useForm from '../../Hooks/useForm'
 import { TextField } from '@material-ui/core';
 import {login} from '../../Service/useRequestPost'
 import { useHistory } from 'react-router';
+import { GlobalStateContext } from '../../Global/GlobalStateContext';
 
 const LoginForm = () => {
 
     const history = useHistory();
+    const {setters} = useContext(GlobalStateContext)
 
     const initialState = {
         email: "",
@@ -19,7 +21,7 @@ const LoginForm = () => {
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-        login(form,history);
+        login(form,history,setters.setLogado);
     }
 
     
