@@ -4,7 +4,7 @@ import { StyledTooBar} from './Styled'
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
-import {goToSingUp,goToHomePage} from '../../Router/Coordinator'
+import {goToHomePage} from '../../Router/Coordinator'
 import {useHistory} from 'react-router-dom'
 import {GlobalStateContext} from '../../Global/GlobalStateContext'
 
@@ -20,9 +20,9 @@ const Header = () =>{
         if(token){
             localStorage.removeItem("token");
             setters.setLogado("Cadastrar");
-            goToSingUp(history)
+            goToHomePage(history)
         }else{
-            goToSingUp(history)
+            goToHomePage(history)
         }
     }
 

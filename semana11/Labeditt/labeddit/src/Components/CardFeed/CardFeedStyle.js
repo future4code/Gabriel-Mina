@@ -1,31 +1,39 @@
 import styled from 'styled-components'
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
-
-export const Posts = styled.div`
+export const CardStyle = styled(Card)`
+    width:100%;
     border:1px solid black;
-    background-color:grey;
+    display:flex;
+    height:20vh;
+    flex-direction:column;
+    justify-content:space-between;
+
+`
+export const Posts = styled.div`
     width:40vw;
-    height:40vh;
     display:flex;
     flex-direction:column;
-    margin:10px 0 ;
+    margin:10px 0;
+`
+export const CardContentStyle = styled(CardContent)`
+    display:flex;
+    flex-direction:column;
+`
 
-`
-export const PostName = styled.div`
+export const PostName = styled(Typography)`
     display:flex;
     flex:1;
-    border:1px solid black;
-    justify-content:center;
 `
-export const PostText = styled.div`
+export const PostText = styled(Typography)`
     display:flex;
-    flex:2;
-    border:1px solid black;
     justify-content:center;
 `
-export const PostComents = styled.div`
+export const PostComents = styled(CardActions)`
     display:flex;
     flex:1;
-    border:1px solid black;
-    justify-content:center;
+    justify-content:space-between;
 `

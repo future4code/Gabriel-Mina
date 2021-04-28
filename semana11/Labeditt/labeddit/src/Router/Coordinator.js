@@ -6,8 +6,8 @@ export const goToFeed = (history) =>{
     history.push("/Feed")    
 }
 
-export const goToPost = (history) =>{
-    history.push("/Post")    
+export const goToPost = (history,id) =>{
+    history.push(`/Post/${id}`)    
 }
 
 export const goToSingUp = (history) =>{

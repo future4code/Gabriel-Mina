@@ -23,7 +23,7 @@ const Router = () => {
                     <Feed />
                 </Route>
 
-                <Route exact path="/Post">
+                <Route exact path="/Post/:idPost">
                     <Post />
                 </Route>
 

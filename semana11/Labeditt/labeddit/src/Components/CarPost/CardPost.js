@@ -7,13 +7,13 @@ import { createPost } from '../../Service/useRequestPost'
 
 const CardPost = () => {
 
-
     const initialState = {
         text: "",
         title: ""
     }
 
     const [form, handleInputChange, clear] = useForm(initialState)
+
 
     const onSubmitForm = (e) => {
         e.preventDefault();

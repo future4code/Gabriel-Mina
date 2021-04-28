@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 export const Posts = styled.div`
     border:1px solid black;
-    background-color:grey;
     width:30vw;
     height:25vh;
     display:flex;
