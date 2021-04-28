@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useParams } from 'react-router';
 import useProtectedPage from '../../Hooks/useProtectedPage';
 import useRequestData from '../../Hooks/useRequestData';
@@ -43,11 +42,15 @@ const Post = () => {
     return (
         <Principal>
            { getDetail.post && <CardPostDetail
+                id={getDetail.post.id}
                 username={getDetail.post.username}
                 text={getDetail.post.text}
                 votesCount={getDetail.post.votesCount}
                 commentsCount={getDetail.post.commentsCount}
             />}
+
+             <div>{commentsScreen && commentsScreen.length > 0 ? commentsScreen : <p>Sem comentários</p>}</div>
+            
             <form onSubmit={onSubmitForm}>
                 <TextField
                     type={"text"}
@@ -69,7 +72,6 @@ const Post = () => {
                     Enviar Comentario
                         </Button>
             </form>
-            <div>{commentsScreen && commentsScreen.length > 0 ? commentsScreen : <p>Sem comentários</p>}</div>
         </Principal>
     )
 }

@@ -18,6 +18,12 @@ export const Posts = styled.div`
     display:flex;
     flex-direction:column;
     margin:10px 0;
+    @media(max-width:800px){
+        width:80vw;
+        display:flex;
+        justify-content:center;
+        margin:20px;
+    }
 `
 export const CardContentStyle = styled(CardContent)`
     display:flex;

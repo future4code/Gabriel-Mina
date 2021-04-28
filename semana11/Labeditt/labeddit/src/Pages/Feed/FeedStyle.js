@@ -10,3 +10,4 @@ export const Principal = styled.div`
     min-height:50vh;
     margin-top:20px;
 `
+

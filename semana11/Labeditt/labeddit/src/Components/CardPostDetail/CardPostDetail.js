@@ -2,6 +2,8 @@ import React from 'react'
 import { Posts, CardStyle, CardContentStyle, PostText, PostComents } from './CardPostDetailStyle'
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -37,9 +39,9 @@ const CardFeed = (props) => {
                     </CardContentStyle>
                 <PostComents>
                     <div>
-                        <Button onClick={() => vote(1)}>Positivo</Button>
+                    <Button onClick={() => vote(1)}><ArrowUpwardIcon/></Button>
                         {props.votesCount}
-                        <Button onClick={() => vote(-1)}>negativo</Button>
+                        <Button onClick={() => vote(-1)}><ArrowDownwardIcon/></Button>
                     </div>
                     <div>
                         {props.commentsCount} Comentários
