@@ -18,9 +18,24 @@ export const createLogin = async(body,history) =>{
     try{
         const response = await axios.post(`${BASE_URL}/signup`,body);
         alert("Conta criada com sucesso !")
+        console.log(response.data);
         goToHomePage(history);
     }catch(erro){
         alert(erro.response.data.message)
     }
     
+}
+
+export const createPost = async(body,clear) =>{
+    try{
+        const response = await axios.post(`${BASE_URL}/posts`,body,{
+            headers:{
+                Authorization: localStorage.getItem("token")
+            }
+        });
+        console.log(response.data);
+        clear();
+    }catch(erro){
+        alert(erro.response.data.message)
+    }
 }

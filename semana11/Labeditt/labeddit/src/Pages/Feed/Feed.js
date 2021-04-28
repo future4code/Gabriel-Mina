@@ -5,12 +5,13 @@ import useRequestData from '../../Hooks/useRequestData';
 import { BASE_URL } from '../../Constants/Urls'
 import CardFeed from '../../Components/CardFeed/CardFeed'
 import loading from '../../Assets/loading.gif'
+import CardPost from '../../Components/CarPost/CardPost'
+
 
 const Feed = () => {
     useProtectedPage();
     const post = useRequestData([], `${BASE_URL}/posts`)
-    console.log(post);
-
+    
 
     const postScreen = post.map((post) => {
         return <CardFeed 
@@ -22,6 +23,7 @@ const Feed = () => {
 
     return (
         <Principal>
+            <CardPost />
             {postScreen && postScreen.length > 0 ? postScreen :<img src={loading}/>}
         </Principal>
     )

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const Posts = styled.div`
     border:1px solid black;
     background-color:grey;
-    width:30vw;
+    width:40vw;
     height:40vh;
     display:flex;
     flex-direction:column;
