@@ -1,41 +1,55 @@
 import axios from 'axios'
-import {BASE_URL} from '../Constants/Urls'
-import {goToHomePage,goToFeed} from '../Router/Coordinator'
+import { BASE_URL } from '../Constants/Urls'
+import { goToHomePage, goToFeed } from '../Router/Coordinator'
 
-export const login = async(body,history,setLogado) =>{
-    try{
-        const response = await axios.post(`${BASE_URL}/login`,body);
-        localStorage.setItem("token",response.data.token)
+export const login = async (body, history, setLogado) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/login`, body);
+        localStorage.setItem("token", response.data.token)
         alert("Logado com sucesso")
         goToFeed(history)
         setLogado("Logout")
-    }catch(erro){
+    } catch (erro) {
         alert(erro.response.data.message)
     }
 }
 
-export const createLogin = async(body,history) =>{
-    try{
-        const response = await axios.post(`${BASE_URL}/signup`,body);
+export const createLogin = async (body, history) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/signup`, body);
         alert("Conta criada com sucesso !")
         console.log(response.data);
         goToHomePage(history);
-    }catch(erro){
+    } catch (erro) {
         alert(erro.response.data.message)
     }
-    
+
 }
 
-export const createPost = async(body,clear) =>{
-    try{
-        const response = await axios.post(`${BASE_URL}/posts`,body,{
-            headers:{
+export const createPost = async (body, clear) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/posts`, body, {
+            headers: {
                 Authorization: localStorage.getItem("token")
             }
         });
         console.log(response.data);
         clear();
-    }catch(erro){
+    } catch (erro) {
+        alert(erro.response.data.message)
+    }
+}
+
+export const createComment = async (body,id,clear) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/posts/${id}/comment`, body, {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        });
+        console.log(response.data);
+        clear();
+    } catch (erro) {
         alert(erro.response.data.message)
     }
 }

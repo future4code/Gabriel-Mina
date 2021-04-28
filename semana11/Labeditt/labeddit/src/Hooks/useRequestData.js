@@ -4,21 +4,21 @@ import axios from 'axios'
 const useRequestData = (initialData,url) =>{
     const [data,setData] = useState(initialData)
     
-    const getPosts = async() =>{
+    const getData = async() =>{
         try{
             const response = await axios.get(url,{
                 headers:{
                     Authorization: localStorage.getItem("token")
                 }
             })
-            setData(response.data.posts)
+            setData(response.data)
         }catch(erro){
             console.log(erro.response.data.message)
         }
     }
 
     useEffect(()=>{
-        getPosts();
+        getData();
     },[])
 
     return data;

@@ -8,15 +8,14 @@ import loading from '../../Assets/loading.gif'
 import CardPost from '../../Components/CarPost/CardPost'
 
 
-
-
-
 const Feed = () => {
     useProtectedPage();
-    const post = useRequestData([], `${BASE_URL}/posts`)
+    const feed = useRequestData([], `${BASE_URL}/posts`)
 
-    const postScreen = post.map((post) => {
+    
+    const postScreen = feed.posts && feed.posts.map((post) => {
         return <CardFeed
+            key={post.id}
             id={post.id}
             username={post.username}
             text={post.text}
