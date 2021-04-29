@@ -8,7 +8,7 @@ export const CardStyle = styled(Card)`
     width:100%;
     border:1px solid black;
     display:flex;
-    height:20vh;
+    min-height:20vh;
     flex-direction:column;
     justify-content:space-between;
 

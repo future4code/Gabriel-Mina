@@ -35,10 +35,10 @@ const CardFeed = (props) => {
             <CardStyle>
                 <CardActionArea onClick={()=> goToPost(history,props.id)}>
                     <CardContentStyle>
-                        <Typography color="textSecondary" gutterBottom>
+                        <Typography color="textSecondary">
                             Autor(a): {props.username.toLowerCase()}
                         </Typography>
-                        <PostText variant="h6" component="h5">
+                        <PostText component="h1">
                             {props.text.toLowerCase()}
                         </PostText>
                     </CardContentStyle>

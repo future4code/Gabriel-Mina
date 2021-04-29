@@ -29,10 +29,10 @@ const CardFeed = (props) => {
         <Posts>
             <CardStyle>
                     <CardContentStyle>
-                        <Typography color="textSecondary" gutterBottom>
+                        <Typography color="textSecondary" >
                             Autor(a): {props.username}
                         </Typography>
-                        <PostText variant="h6" component="h5">
+                        <PostText component="h1">
                             {props.text}
                         </PostText>
                     </CardContentStyle>

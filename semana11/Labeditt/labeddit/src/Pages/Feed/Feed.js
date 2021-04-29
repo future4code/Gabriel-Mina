@@ -6,23 +6,19 @@ import { BASE_URL } from '../../Constants/Urls'
 import CardFeed from '../../Components/CardFeed/CardFeed'
 import loading from '../../Assets/loading.gif'
 import CardPost from '../../Components/CarPost/CardPost'
-import {TextField } from '@material-ui/core';
 import useForm from '../../Hooks/useForm';
 
 
 const Feed = () => {
     useProtectedPage();
     const feed = useRequestData([], `${BASE_URL}/posts`)
-    
+
+
     const initialState = {
         "text": ""
     }
 
     const [form, handleInputChange] = useForm(initialState)
-
-    const onSubmitForm = (e) => {
-        e.preventDefault();
-    }
 
    
 
@@ -46,7 +42,7 @@ const Feed = () => {
                     variant={'outlined'}
                     fullWidth
                     name={"text"}
-                    value={form.text}
+                    value={form.text.toLowerCase()}
                     onChange={handleInputChange}
                     margin={'normal'}
 

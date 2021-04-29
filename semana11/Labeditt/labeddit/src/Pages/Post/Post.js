@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import useProtectedPage from '../../Hooks/useProtectedPage';
 import useRequestData from '../../Hooks/useRequestData';
 import CardPostDetail from '../../Components/CardPostDetail/CardPostDetail'
-import { Principal } from './PostStyle'
+import { Principal,Comments } from './PostStyle'
 import { Button, TextField } from '@material-ui/core';
 import useForm from '../../Hooks/useForm';
 import { createComment } from '../../Service/useRequestPost'
@@ -34,8 +34,12 @@ const Post = () => {
         return (
             <CardComments
                 key={comments.username}
+                id={comments.id}
+                idPost={id}
                 username={comments.username}
-                text={comments.text}>
+                text={comments.text}
+                votesCount={comments.votesCount}
+                >
             </CardComments>
         )
     })
@@ -44,7 +48,8 @@ const Post = () => {
 
     return (
         <Principal>
-            { getDetail.post && <CardPostDetail
+            { getDetail.post && 
+            <CardPostDetail
                 id={getDetail.post.id}
                 username={getDetail.post.username}
                 text={getDetail.post.text}
@@ -53,7 +58,7 @@ const Post = () => {
             />}
 
             <p><h2>Comentários</h2></p>
-            <div>{commentsScreen && commentsScreen.length > 0 ? commentsScreen : <p>Sem comentários</p>}</div>
+            <Comments>{commentsScreen && commentsScreen.length > 0 ? commentsScreen : <p>Sem comentários</p>}</Comments>
             
             <form onSubmit={onSubmitForm}>
                 <TextField

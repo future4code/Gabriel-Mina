@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 export const Posts = styled.div`
     width:40vw;
     display:flex;
+    height:30vh;
     flex-direction:column;
     margin:10px 0;
     @media(max-width:800px){
@@ -21,7 +22,7 @@ export const CardStyle = styled(Card)`
     width:100%;
     border:1px solid black;
     display:flex;
-    height:20vh;
+    min-height:20vh;
     flex-direction:column;
     justify-content:space-between;
     @media(max-width:800px){

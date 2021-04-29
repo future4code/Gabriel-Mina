@@ -76,7 +76,7 @@ const SingUpForm = () => {
                         margin={'normal'}
                         color="primary"
                         fullWidth>
-                        Entrar
+                        Criar
                         </Button>
                 </Buttons>
             </form>

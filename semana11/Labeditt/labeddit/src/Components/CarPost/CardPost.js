@@ -6,7 +6,7 @@ import useForm from '../../Hooks/useForm';
 import { createPost } from '../../Service/useRequestPost'
 
 const CardPost = () => {
-
+    
     const initialState = {
         text: "",
         title: ""

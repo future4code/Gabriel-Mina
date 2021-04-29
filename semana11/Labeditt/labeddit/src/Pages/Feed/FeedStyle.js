@@ -7,9 +7,6 @@ export const Principal = styled.div`
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    width:90vw;
-    min-height:50vh;
-    margin-top:20px;
         @media(max-width:800px){
             width:80vw;
             display:flex;
