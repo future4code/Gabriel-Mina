@@ -9,4 +9,11 @@
 🔸 Os testes vão começar falando que vocês erraram a questão porque ainda não existe lógica dentro das funções! Não se desespere com isso!  
 🔸 Sintam-se livres para consultar os materiais das aulas anteriores.
 
+algumas logicas:
+1.- Achar quantas vezes o caracter apareceu na frase:
+R: const contaCaracteres = (frase, caracter) => {
+const fraseEmArray = frase.toLowerCase().split('')
+const numeroDeOcorrencias = fraseEmArray.filter(c => caracter === c).length
+console.log(`O caracter ${caracter} apareceu ${numeroDeOcorrencias} vezes.`)
+
 
