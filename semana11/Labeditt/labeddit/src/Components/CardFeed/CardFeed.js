@@ -1,5 +1,5 @@
 import React from 'react'
-import { Posts, CardStyle, CardContentStyle,CardActionAreaStyle, PostText, PostComents } from './CardFeedStyle'
+import { Posts, CardStyle, CardContentStyle, PostText, PostComents } from './CardFeedStyle'
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +7,7 @@ import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { useHistory } from 'react-router';
 import {goToPost} from '../../Router/Coordinator'
+import { CardActionArea } from '@material-ui/core';
 
 const CardFeed = (props) => {
 
@@ -32,7 +33,7 @@ const CardFeed = (props) => {
     return (
         <Posts>
             <CardStyle>
-                <CardActionAreaStyle onClick={()=> goToPost(history,props.id)}>
+                <CardActionArea onClick={()=> goToPost(history,props.id)}>
                     <CardContentStyle>
                         <Typography color="textSecondary" gutterBottom>
                             Autor(a): {props.username}
@@ -41,7 +42,7 @@ const CardFeed = (props) => {
                             {props.text}
                         </PostText>
                     </CardContentStyle>
-                </CardActionAreaStyle>
+                </CardActionArea>
                 <PostComents>
                     <div>
                         <Button onClick={() => vote(1)}><ArrowUpwardIcon/></Button>

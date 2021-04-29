@@ -6,15 +6,17 @@ import CardPostDetail from '../../Components/CardPostDetail/CardPostDetail'
 import { Principal } from './PostStyle'
 import { Button, TextField } from '@material-ui/core';
 import useForm from '../../Hooks/useForm';
-import {createComment} from '../../Service/useRequestPost'
+import { createComment } from '../../Service/useRequestPost'
 import { BASE_URL } from '../../Constants/Urls';
+import CardComments from '../../Components/CardComments/CardComments'
+import loading from '../../Assets/loading.gif'
 
 
 const Post = () => {
     useProtectedPage();
 
     const { id } = useParams();
-    const getDetail = useRequestData({},`${BASE_URL}/posts/${id}`)
+    const getDetail = useRequestData({}, `${BASE_URL}/posts/${id}`)
 
 
     const initialState = {
@@ -24,16 +26,17 @@ const Post = () => {
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-        createComment(form,id,clear)
+        createComment(form, id, clear)
     }
 
 
     const commentsScreen = getDetail.post && getDetail.post.comments.length > 0 && getDetail.post.comments.map((comments) => {
         return (
-            <div key={comments.username}>
-                <p>Autor: {comments.username}</p>
-                <p>{comments.text}</p>
-            </div>
+            <CardComments
+                key={comments.username}
+                username={comments.username}
+                text={comments.text}>
+            </CardComments>
         )
     })
 
@@ -41,7 +44,7 @@ const Post = () => {
 
     return (
         <Principal>
-           { getDetail.post && <CardPostDetail
+            { getDetail.post && <CardPostDetail
                 id={getDetail.post.id}
                 username={getDetail.post.username}
                 text={getDetail.post.text}
@@ -49,7 +52,8 @@ const Post = () => {
                 commentsCount={getDetail.post.commentsCount}
             />}
 
-             <div>{commentsScreen && commentsScreen.length > 0 ? commentsScreen : <p>Sem comentários</p>}</div>
+            <p><h2>Comentários</h2></p>
+            <div>{commentsScreen && commentsScreen.length > 0 ? commentsScreen : <p>Sem comentários</p>}</div>
             
             <form onSubmit={onSubmitForm}>
                 <TextField
@@ -69,8 +73,7 @@ const Post = () => {
                     margin={'normal'}
                     color="primary"
                     fullWidth>
-                    Enviar Comentario
-                        </Button>
+                    Enviar Comentario</Button>
             </form>
         </Principal>
     )

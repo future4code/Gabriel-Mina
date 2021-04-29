@@ -15,12 +15,11 @@ const CardFeed = (props) => {
         }
 
         try {
-            const response = await axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${props.id}/vote`, body, {
+            await axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${props.id}/vote`, body, {
                 headers: {
                     Authorization: localStorage.getItem("token")
                 }
             });
-            console.log(response.data);
         } catch (erro) {
             console.log(erro.response.data);
         }

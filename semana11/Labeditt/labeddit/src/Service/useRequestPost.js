@@ -16,9 +16,8 @@ export const login = async (body, history, setLogado) => {
 
 export const createLogin = async (body, history) => {
     try {
-        const response = await axios.post(`${BASE_URL}/signup`, body);
+        await axios.post(`${BASE_URL}/signup`, body);
         alert("Conta criada com sucesso !")
-        console.log(response.data);
         goToHomePage(history);
     } catch (erro) {
         alert(erro.response.data.message)
@@ -28,12 +27,12 @@ export const createLogin = async (body, history) => {
 
 export const createPost = async (body, clear) => {
     try {
-        const response = await axios.post(`${BASE_URL}/posts`, body, {
+        await axios.post(`${BASE_URL}/posts`, body, {
             headers: {
                 Authorization: localStorage.getItem("token")
             }
         });
-        console.log(response.data);
+        alert("Postagem realizada com sucesso !")
         clear();
     } catch (erro) {
         alert(erro.response.data.message)
@@ -42,12 +41,12 @@ export const createPost = async (body, clear) => {
 
 export const createComment = async (body,id,clear) => {
     try {
-        const response = await axios.post(`${BASE_URL}/posts/${id}/comment`, body, {
+        await axios.post(`${BASE_URL}/posts/${id}/comment`, body, {
             headers: {
                 Authorization: localStorage.getItem("token")
             }
         });
-        console.log(response.data);
+        alert("Comentário realizado com sucesso")
         clear();
     } catch (erro) {
         alert(erro.response.data.message)

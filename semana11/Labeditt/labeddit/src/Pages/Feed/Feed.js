@@ -45,7 +45,7 @@ const Feed = () => {
     
     return (
         <Principal>
-             <form onSubmit={onSubmitForm}>
+             {/* <form onSubmit={onSubmitForm}>
                 <TextField
                     type={"text"}
                     label={"Buscar Postagem"}
@@ -65,7 +65,7 @@ const Feed = () => {
                     fullWidth>
                     Buscar feed
                         </Button>
-            </form>
+            </form> */}
             <CardPost />
             {postScreen && postScreen.length > 0 ? postScreen :<img src={loading} alt={loading}/>}
             
