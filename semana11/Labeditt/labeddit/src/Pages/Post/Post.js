@@ -9,7 +9,7 @@ import useForm from '../../Hooks/useForm';
 import { createComment } from '../../Service/useRequestPost'
 import { BASE_URL } from '../../Constants/Urls';
 import CardComments from '../../Components/CardComments/CardComments'
-import loading from '../../Assets/loading.gif'
+
 
 
 const Post = () => {
