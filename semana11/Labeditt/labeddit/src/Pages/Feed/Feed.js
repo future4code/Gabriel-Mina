@@ -17,7 +17,6 @@ const Feed = () => {
 
     // chamada da api para atualizar automaticamento a pagina apos um post criado
     const getData = async () => {
-        console.log("entrou");
         try {
             const response = await axios.get(`${BASE_URL}/posts`, {
                 headers: {
