@@ -1,18 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useProtectedPage from '../../Hooks/useProtectedPage';
-import { Principal,TextFieldStyle } from './FeedStyle'
+import { Principal, TextFieldStyle } from './FeedStyle'
 import useRequestData from '../../Hooks/useRequestData';
 import { BASE_URL } from '../../Constants/Urls'
 import CardFeed from '../../Components/CardFeed/CardFeed'
 import loading from '../../Assets/loading.gif'
 import CardPost from '../../Components/CarPost/CardPost'
 import useForm from '../../Hooks/useForm';
+import axios from 'axios';
 
 
 const Feed = () => {
     useProtectedPage();
-    const feed = useRequestData([], `${BASE_URL}/posts`)
+    let [dataFeed, setDataFeed] = useState([])
+    dataFeed = useRequestData([], `${BASE_URL}/posts`)
 
+    // chamada da api para atualizar automaticamento a pagina apos um post criado
+    const getData = async () => {
+        console.log("entrou");
+        try {
+            const response = await axios.get(`${BASE_URL}/posts`, {
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            })
+            setDataFeed(response.data)
+        } catch (erro) {
+            console.log(erro.response.data.message)
+        }
+    }
+    useEffect(() => {
+        getData();
+    }, [])
 
     const initialState = {
         "text": ""
@@ -20,9 +39,9 @@ const Feed = () => {
 
     const [form, handleInputChange] = useForm(initialState)
 
-   
 
-    const postScreen = feed.posts && feed.posts.map((post) => {
+
+    const postScreen = dataFeed.posts && dataFeed.posts.map((post) => {
         return <CardFeed
             key={post.id}
             id={post.id}
@@ -33,27 +52,29 @@ const Feed = () => {
         />
     })
 
-    
+
     return (
         <Principal>
-                <TextFieldStyle
-                    type={"text"}
-                    label={"Buscar Postagem"}
-                    variant={'outlined'}
-                    fullWidth
-                    name={"text"}
-                    value={form.text.toLowerCase()}
-                    onChange={handleInputChange}
-                    margin={'normal'}
+            <TextFieldStyle
+                type={"text"}
+                label={"Buscar Postagem (Usuario ou texto)"}
+                variant={'outlined'}
+                fullWidth
+                name={"text"}
+                value={form.text.toLowerCase()}
+                onChange={handleInputChange}
+                margin={'normal'}
 
-                />
-            <CardPost />
+            />
+            <CardPost
+                getData={getData}
+            />
             {postScreen && postScreen.length > 0 ?
-             postScreen.filter((feed)=>{
-                    return(form.text ? ((feed.props.username) && (feed.props.username.toLowerCase().includes(form.text)||feed.props.text.toLowerCase().includes(form.text))) : true)
-             }) 
-             :<img src={loading} alt={loading}/>}
-            
+                postScreen.filter((feed) => {
+                    return (form.text ? ((feed.props.username) && (feed.props.username.toLowerCase().includes(form.text) || feed.props.text.toLowerCase().includes(form.text))) : true)
+                })
+                : <img src={loading} alt={loading} />}
+
         </Principal>
     )
 }

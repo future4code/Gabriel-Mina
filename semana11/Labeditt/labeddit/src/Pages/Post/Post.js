@@ -45,7 +45,6 @@ const Post = () => {
     })
 
 
-
     return (
         <Principal>
             { getDetail.post && 

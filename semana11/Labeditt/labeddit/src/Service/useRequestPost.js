@@ -25,7 +25,7 @@ export const createLogin = async (body, history) => {
 
 }
 
-export const createPost = async (body, clear) => {
+export const createPost = async (body, clear,getData) => {
     try {
         await axios.post(`${BASE_URL}/posts`, body, {
             headers: {
@@ -33,13 +33,14 @@ export const createPost = async (body, clear) => {
             }
         });
         alert("Postagem realizada com sucesso !")
+        getData();
         clear();
     } catch (erro) {
         alert(erro.response.data.message)
     }
 }
 
-export const createComment = async (body,id,clear) => {
+export const createComment = async (body,id,clear,getData) => {
     try {
         await axios.post(`${BASE_URL}/posts/${id}/comment`, body, {
             headers: {
@@ -47,6 +48,7 @@ export const createComment = async (body,id,clear) => {
             }
         });
         alert("Comentário realizado com sucesso")
+        getData();
         clear();
     } catch (erro) {
         alert(erro.response.data.message)

@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import useForm from '../../Hooks/useForm';
 import { createPost } from '../../Service/useRequestPost'
 
-const CardPost = () => {
+const CardPost = (props) => {
     
     const initialState = {
         text: "",
@@ -17,7 +17,7 @@ const CardPost = () => {
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-        createPost(form, clear)
+        createPost(form, clear,props.getData)
     }
 
     return (
