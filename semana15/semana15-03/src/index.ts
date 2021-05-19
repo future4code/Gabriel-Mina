@@ -23,6 +23,7 @@ app.get("/countries/search", (req: Request, res: Response) => {
             throw new Error("Nenhum parâmetro foi passado")
         }
 
+
         let result: country[] = countries;
 
         if (req.query.name) {
@@ -98,8 +99,8 @@ app.put("/countries/edit/:id", (req: Request, res: Response) => {
 
         const novoResult:(country) = {
             id:result?.id as number,
-            name: alteraBody.name,
-            capital: alteraBody.capital,
+            name: req.body.name,
+            capital: req.body.capital,
             continent: result?.continent as CONTINENTS 
         }
 
