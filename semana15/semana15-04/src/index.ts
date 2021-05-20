@@ -6,8 +6,8 @@ app.use(express.json())
 app.use(cors())
 
 enum typePerson {
-    ADMIN = "Admin",
-    NORMAL = "Normal"
+    ADMIN = "ADMIN",
+    NORMAL = "NORMAL"
 }
 
 type user = {
@@ -71,6 +71,27 @@ app.get("/users", (req: Request, res: Response) => {
         res.status(400).send({ message: erro.message })
     }
 })
+// Exercicio 2
+app.get("/users/:type", (req: Request, res: Response) => {
+    try {
+        const type = req.params.type;
+        //type !== typePerson.ADMIN.toLowerCase() && type !== typePerson.NORMAL.toLowerCase()
+        if (!(type in typePerson)) {
+            throw new Error("Tipo não válido");
+        }
+
+        const result = users.filter((user) => user.type.includes(type))
+
+        // caso não ache o type
+        if (!result.length) {
+            throw new Error("Não foi possivel achar");
+        }
+
+        res.status(200).send(result)
+    } catch (erro) {
+        res.status(400).send({ message: erro.message })
+    }
+})
 
 // Exercicio 3
 app.get("/users/search", (req: Request, res: Response) => {
@@ -108,28 +129,6 @@ app.put("/users/:id", (req: Request, res: Response) => {
 
         res.status(200).send(newNamePerson)
 
-    } catch (erro) {
-        res.status(400).send({ message: erro.message })
-    }
-})
-// Exercicio 2
-app.get("/users/:type", (req: Request, res: Response) => {
-    try {
-        const type = req.params.type.toLowerCase();
-
-        if (type !== typePerson.ADMIN.toLowerCase() || type !== typePerson.NORMAL.toLowerCase()) {
-            throw new Error("Tipo não válido");
-        }
-
-        const result = users.filter((user) => user.type.toLowerCase().includes(type))
-
-        // caso não ache o type
-        if (!result.length) {
-            throw new Error("Não foi possivel achar");
-        }
-
-
-        res.status(200).send(result)
     } catch (erro) {
         res.status(400).send({ message: erro.message })
     }
