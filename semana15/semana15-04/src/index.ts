@@ -76,6 +76,7 @@ app.get("/users/:type", (req: Request, res: Response) => {
     try {
         const type = req.params.type;
         //type !== typePerson.ADMIN.toLowerCase() && type !== typePerson.NORMAL.toLowerCase()
+        
         if (!(type in typePerson)) {
             throw new Error("Tipo não válido");
         }
