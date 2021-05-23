@@ -15,19 +15,28 @@ type extrato = {
 type usuario_conta = {
     cpf: string,
     nome: string,
-    idade: number,
+    data_nascimento_data: Date,
     saldo: number,
-    extrato?: extrato[]
+    extrato: extrato[]
 }
 
-let usuarios_banco: usuario_conta[]= [
+let usuarios_banco: usuario_conta[] = [
+    {
+        cpf: "581.579.997-15",
+        nome: "Jubenildo",
+        data_nascimento_data: new Date("10/01/1960"),
+        saldo: 200,
+        extrato: []
+    },
+
     {
         cpf: "450.087.058-06",
-        nome: "Gabriel Mina da Silva",
-        idade: 23,
-        saldo: 0,
+        nome: "Gabriel",
+        data_nascimento_data: new Date("08/12/1997"),
+        saldo: 100,
         extrato: []
     }
+
 ]
 
 app.get("/usuarios-banco", (req: Request, res: Response) => {
@@ -45,26 +54,18 @@ app.get("/usuario-saldo", (req: Request, res: Response) => {
         const nome = req.query.nome;
         const cpf = req.query.cpf;
 
-        const result = usuarios_banco.filter((person) => {
-
-            if (person.nome !== nome) {
-                throw new Error("Nome não existente")
-            } else
-                if (person.cpf !== cpf) {
-                    throw new Error("CPF não existente")
-                }
-
-            if (person.nome === nome && person.cpf === cpf) {
-                return person
+        const result = usuarios_banco.find((usuario) => {
+            if (usuario.nome === nome && usuario.cpf === cpf) {
+                return true
             }
-
         })
 
-        const mapResult = result.map((info)=>{
-            return `Saldo: ${info.saldo}`
-           })
+        if (result) {
+            res.status(200).send({ saldo: result.saldo })
+        } else {
+            throw new Error("Não foi possivel achar")
+        }
 
-        res.status(200).send(mapResult)
     } catch (erro) {
         res.status(400).send({ message: erro.message })
     }
@@ -78,82 +79,143 @@ app.put("/usuario-saldo", (req: Request, res: Response) => {
         const cpf = req.query.cpf;
         const saldo = Number(req.query.saldo);
 
-        const result = usuarios_banco.filter((person) => {
-
-            if (person.nome !== nome) {
-                throw new Error("Nome não existente")
-            } else
-                if (person.cpf !== cpf) {
-                    throw new Error("CPF não existente")
-                }else{
-                    return person
+        const result = usuarios_banco.find((usuario) => {
+            if (usuario.nome === nome && usuario.cpf === cpf) {
+                return true
+            }
+            /*
+                if(usuario.nome !== nome){
+                    throw new Error(" Nome nao encontado")
+                }else if(usuario.cpf !== cpf){
+                    throw new Error(" Cpf nao encontrado")
                 }
+            */
         })
-       
-        // adiciona saldo 
-        result.map((saldoS)=>{saldoS.saldo+=saldo})
 
-        res.status(200).send(result)
+        // adiciona saldo 
+        if (result) {
+            result.saldo += saldo;
+            res.status(200).send(result)
+        } else {
+            throw new Error("Não foi possivel achar")
+        }
+
+
     } catch (erro) {
         res.status(400).send({ message: erro.message })
     }
 })
 
-app.put("/pagamentos/:cpf",(req: Request, res: Response)=>{
-    try{
-        
-        const {valor,data_extrato,descricao} = req.body;
-        const cpf = req.params.cpf;
-        const result = usuarios_banco.find((usuarioCpf)=> usuarioCpf.cpf === cpf )
-        
-        
-        
-        if(result){
-            if(valor > result.saldo){
-                throw new Error("Saldo insuficiente")
-            }else{
-                result.saldo-= valor;
-            }
-        }
-        
+app.put("/pagamentos/:cpf", (req: Request, res: Response) => {
+    try {
 
-        const conta: extrato={
-            valor,
-            data_extrato,
-            descricao
+        const { valor, data_extrato, descricao } = req.body;
+        const cpf = req.params.cpf;
+        const result = usuarios_banco.find((usuarioCpf) => usuarioCpf.cpf === cpf)
+
+
+
+        if (result) {
+            if (valor > result.saldo) {
+                throw new Error("Saldo insuficiente")
+            } else {
+                result.saldo -= valor;
+
+                result.extrato.push({
+                    valor,
+                    data_extrato,
+                    descricao
+                })
+            }
+            res.status(200).send(`Conta no valor de ${valor} paga com sucesso`)
+        } else {
+            throw new Error("Não foi possivel achar")
         }
-        
-        result?.extrato?.push(conta)
-        res.status(200).send(conta)
-    }catch(erro){
-        res.status(400).send({message:erro.message})
+
+    } catch (erro) {
+        res.status(400).send({ message: erro.message })
+    }
+})
+// Transferencia de valores
+app.post("/users/tranferencia", (req: Request, res: Response) => {
+    try {
+
+        const nomeRementente = req.query.nome
+        const cpfRementente = req.query.cpf
+        const valorRementente = Number(req.query.valor);
+        const nomeDestinatario = req.query.nomeD;
+        const cpfDestinatario = req.query.cpfD;
+
+        // Procurar o remetente 
+        const result = usuarios_banco.find((usuario) => {
+            if (usuario.nome === nomeRementente && usuario.cpf === cpfRementente) {
+                return true
+            }
+        })
+        // Procurar o destinatario 
+        const resultDestinatario = usuarios_banco.find((usuario) => {
+            if (usuario.nome === nomeDestinatario && usuario.cpf === cpfDestinatario) {
+                return true
+            }
+        })
+
+
+
+        if (resultDestinatario) {
+            if (result) {
+                if (valorRementente > result.saldo) {
+                    throw new Error(`Saldo insuficiente de ${result.nome} para realizar esta operação`)
+                }
+
+                // adicionar transferencia
+                resultDestinatario.saldo += valorRementente
+                result.saldo -= valorRementente;
+            } else {
+                throw new Error("remetente não encontrado não encontrado")
+            }
+        } else {
+            throw new Error("Destinatário não encontrado")
+        }
+        res.status(200).send(`valor ${valorRementente} transferido com sucesso para ${nomeDestinatario}`)
+    } catch (error) {
+        res.status(400).send({ message: error.message })
     }
 })
 
 app.post("/criar-conta", (req: Request, res: Response) => {
 
     try {
-        const { cpf, nome, idade, saldo } = req.body;
+        const { cpf, nome, data_nascimento } = req.body;
+        //converte idade dd/mm/aaaa para [dd,mm,aaaa]
+        const [dia, mes, ano] = data_nascimento.split("/");
 
-        if (!(idade >= 18)) {
+        const data_nascimento_data: Date = new Date(`${ano}-${mes}-${dia}`);
+
+        const idadeEmMilisegundos: number = Date.now() - data_nascimento_data.getTime();
+
+        const idadeAno: number = idadeEmMilisegundos / 1000 / 60 / 60 / 24 / 365;
+
+
+
+        if (idadeAno <= 18) {
             throw new Error("Usuario deve ter idade igual ou maior do que 18 anos.")
         }
 
-        usuarios_banco.filter((cpfDuplicado)=>{
-            if(cpfDuplicado.cpf.includes(cpf)){
+        usuarios_banco.filter((cpfDuplicado) => {
+            if (cpfDuplicado.cpf.includes(cpf)) {
                 throw new Error("CPF duplicado")
             }
         })
 
-        const novoUsuario: usuario_conta = {
+        usuarios_banco.push({
             cpf,
             nome,
-            idade,
-            saldo
-        }
-        
-        usuarios_banco.push(novoUsuario)
-        res.status(200).send(`Usuario ${nome} criado com sucesso`)
+            data_nascimento_data,
+            saldo: 0,
+            extrato: []
+        })
+
+        res.status(201).send(`Usuario ${nome} criado com sucesso`)
     } catch (erro) {
         res.status(400).send({ message: erro.message })
     }
