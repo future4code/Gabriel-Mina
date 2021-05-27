@@ -1,8 +1,8 @@
-GET http://localhost:3003/users
+GET http://localhost:3003/users?gender="male"
 
 ###
 
-GET http://localhost:3003/users/female
+GET http://localhost:3003/users
 
 ###
 

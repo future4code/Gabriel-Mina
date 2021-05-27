@@ -6,16 +6,6 @@ import { connection } from './connection'
 
 // uma função que receba um gender e devolva a média dos salários
 // de atrizes ou atores desse gender
-app.get("/users/:gender", async(req: Request, res: Response) => {
-    try {
-        const gender = req.params.gender;
-        const result = await connection("Actor").avg("salary as MediaSalarial").where({gender})
-        res.status(200).send(result)
-    } catch (error) {
-        res.status(400).send({ message: error.message })
-    }
-   
-})
 const searchActor = async (name: string): Promise<any> => {
     const result = await connection.raw(`
     SELECT * FROM Actor WHERE name = "${name}"
@@ -41,6 +31,16 @@ app.get("/users/:name",async(req:Request, res:Response)=>{
 app.get("/users", async(req: Request, res: Response) => {
     try {
         const result = await connection("Actor")
+        res.status(200).send(result)
+    } catch (error) {
+        res.status(400).send({ message: error.message })
+    }
+   
+})
+app.get("/usersGender", async(req: Request, res: Response) => {
+    try {
+        const gender = req.query.gender;
+        const result = await connection("Actor").count("* as todos_genero").where({gender:gender})
         res.status(200).send(result)
     } catch (error) {
         res.status(400).send({ message: error.message })
@@ -114,4 +114,36 @@ app.delete("/users/:id",async(req:Request,res:Response)=>{
     }
 })
 
+app.post("/filmes",async(req:Request,res:Response)=>{
+    try {
+        const {name,sinopse,data_lancamento,avaliacao} = req.body
 
+        const newFilm={
+            name,
+            sinopse,
+            data_lancamento,
+            avaliacao
+        }
+        await connection.insert(newFilm).into("filmes");
+        res.status(200).send(`${name} inserido com sucesso`)
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
+app.get("/filmes",async(req:Request,res:Response)=>{
+    try {
+        const result = await connection("filmes").limit(2)
+        res.status(200).send(result)
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
+app.get("/filmes/search",async(req:Request,res:Response)=>{
+    try {
+        const name = req.query.name;
+        const result = await connection("filmes").where({name})
+        res.status(200).send(result)
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
