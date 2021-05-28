@@ -24,6 +24,37 @@ app.put("/user",async(req:Request,res:Response)=>{
         res.status(400).send({message:error.message})
     }
 })
+app.get("/user/all",async(req:Request,res:Response)=>{
+    try {
+        
+        const result = await connection("usuario");
+        
+        if(!result.length){
+            throw new Error("Usuario não encontrado")            
+        }
+
+        res.status(200).send(result)
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
+
+app.get("/user",async(req:Request,res:Response)=>{
+    try {
+        const nomeUsuario = req.query.nomeUsuario;
+
+        const result = await connection("usuario").where('name', 'like', `${nomeUsuario}%`)
+        
+        if(!result.length){
+            throw new Error("Usuario não encontrado")            
+        }
+
+        res.status(200).send(result)
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
+
 
 app.get("/user/:id",async(req:Request,res:Response)=>{
     try {
@@ -39,6 +70,9 @@ app.get("/user/:id",async(req:Request,res:Response)=>{
         res.status(400).send({message:error.message})
     }
 })
+
+
+
 
 app.post("/user/edit/:id",async(req:Request,res:Response)=>{
     try {
@@ -87,6 +121,78 @@ app.put("/task",async(req:Request,res:Response)=>{
     }
 })
 
+
+const alterarUsuarioTarefa = async (): Promise<any> => {
+    const result = await connection.raw(`
+    SELECT usuario.id as USUARIO_ID,tarefa.id as TAREFA_ID,name, titulo from usuario_tarefa
+    JOIN usuario on usuario.id = usuario_tarefa.usuario_id
+    JOIN  tarefa on tarefa.id = usuario_tarefa.tarefa_id
+    `)
+    return result[0]
+  }
+
+app.get("/task/responsible",async(req:Request,res:Response)=>{
+    try {
+        //id: number
+    console.log(await alterarUsuarioTarefa());
+    
+        const result = await alterarUsuarioTarefa();
+                        
+        if(!result){
+            throw new Error("Tarefa não encontrada")            
+        }  
+
+        // const data = dayjs(result.data_limite).format('DD/MM/YYYY')
+        // result.data_limite = data;
+        
+        res.status(200).send(result)
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const buscarTarefaUsuario = async (id: number): Promise<any> => {
+    const result = await connection.raw(`
+    select tarefa.id,tarefa.titulo,tarefa.descricao,
+    tarefa.data_limite,tarefa.usuario_id,
+    usuario.username from usuario JOIN tarefa
+    ON  usuario.id = tarefa.usuario_id
+    WHERE usuario.id = ${id};
+    `)
+    return result[0][0]
+  }
+
+app.get("/task",async(req:Request,res:Response)=>{
+    try {
+        const id = Number(req.query.usuario_id);
+    
+        const result = await buscarTarefaUsuario(id);
+                        
+        if(!result){
+            throw new Error("Tarefa não encontrada")            
+        }  
+
+        const data = dayjs(result.data_limite).format('DD/MM/YYYY')
+        result.data_limite = data;
+        
+        res.status(200).send(result)
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
 const buscarTarefa = async (id: number): Promise<any> => {
     const result = await connection.raw(`
     select tarefa.id,tarefa.titulo,tarefa.descricao,
@@ -97,6 +203,7 @@ const buscarTarefa = async (id: number): Promise<any> => {
     `)
     return result[0][0]
   }
+
 
 app.get("/task/:id",async(req:Request,res:Response)=>{
     try {
@@ -116,3 +223,6 @@ app.get("/task/:id",async(req:Request,res:Response)=>{
         res.status(400).send({message:error.message})
     }
 })
+
+
+
