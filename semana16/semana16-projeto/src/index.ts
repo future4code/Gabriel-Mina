@@ -151,20 +151,7 @@ app.get("/task/responsible",async(req:Request,res:Response)=>{
     }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  const buscarTarefaUsuario = async (id: number): Promise<any> => {
+const buscarTarefaUsuario = async (id: number): Promise<any> => {
     const result = await connection.raw(`
     select tarefa.id,tarefa.titulo,tarefa.descricao,
     tarefa.data_limite,tarefa.usuario_id,
@@ -224,5 +211,21 @@ app.get("/task/:id",async(req:Request,res:Response)=>{
     }
 })
 
+app.post("/task/responsible",async(req:Request,res:Response)=>{
+    try {
+        const {tarefa_id , usuario_id} = req.body;
+
+        await connection.raw(`
+            UPDATE usuario_tarefa 
+            SET usuario_id = ${Number(usuario_id)}
+            WHERE tarefa_id = ${Number(tarefa_id)};  
+        `);
+
+        res.status(200).send("Atualizado com sucesso");
+
+    } catch (error) {
+        res.status(400).send({message:error.message})
+    }
+})
 
 
