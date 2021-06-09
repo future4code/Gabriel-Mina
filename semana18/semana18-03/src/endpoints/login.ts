@@ -10,14 +10,14 @@ export default async function login(
 ): Promise<void> {
    try {
 
-      const { email, password }: userCredentials = req.body
+      const { email, password }:userCredentials = req.body
 
       if (!email || !password) {
          res.statusCode = 422
          throw new Error("'email' e 'senha' são obrigatórios ")
       }
 
-      const [user] = await connection("to_do_list_users")
+      const [user] = await connection("usuariosistema")
          .where({ email });
 
       const hashCompare = await compare(password, user.password);
@@ -33,10 +33,6 @@ export default async function login(
 
    } catch (error) {
 
-      if (res.statusCode == 200) {
-         res.status(500).send({ message: "Internal server error" })
-      } else {
-         res.send({ message: error.message })
-      }
+         res.status(400).send({ message: error.message })      
    }
 }

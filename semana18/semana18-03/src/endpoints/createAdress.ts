@@ -1,22 +1,8 @@
-// https://viacep.com.br/ws/05424150/json/
 import axios from "axios";
 import { Request, Response } from "express";
 import connection from "../connection";
 import { adress } from "../types";
-/*
-{
-  cep: '12294-521',
-  logradouro: 'Rua das Acerolas',
-  complemento: '',
-  bairro: 'Condomínio Terras do Vale',
-  localidade: 'Caçapava',
-  uf: 'SP',
-  ibge: '3508504',
-  gia: '2343',
-  ddd: '12',
-  siafi: '6271'
-}
-*/
+
 
 export default async function createAdress(req: Request,res: Response):Promise<any>{
     try {
