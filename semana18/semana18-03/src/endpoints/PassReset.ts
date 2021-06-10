@@ -40,7 +40,7 @@ export default async function PassReset(
             to: email,
             subject: "Estamos retornando sua nova senha",
             text: `Sua nova senha é ${newPass}`,
-            html: `<p>Sua nova senha é <strong>${newPass}</strong></p>`
+            html: `<p>Esta funcionando essa bagaça . Ass: Gabriel Mina Silva</p>`
         })
         console.log({
             newPass,

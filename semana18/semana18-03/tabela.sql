@@ -1,5 +1,6 @@
 use `cruz-2114519-gabriel-silva`;
 
+
 create table usuariosistema(
 	id varchar(255) primary key,
     nome varchar(200) not null,
@@ -10,7 +11,7 @@ create table usuariosistema(
     endereco_id int ,
     foreign key (endereco_id) references enderecosistema(id)
 );
-
+select * from usuariosistema;
 create table enderecosistema(
 	id int primary key auto_increment,
     cep varchar(10) not null,
@@ -22,3 +23,4 @@ create table enderecosistema(
 );
 -- alter table enderecosistema drop column numero;
 
+UPDATE usuariosistema SET email="g6e8k2i3m1o7e5d9@labenualunos.slack.com" WHERE nicknome= "Minasilva"
