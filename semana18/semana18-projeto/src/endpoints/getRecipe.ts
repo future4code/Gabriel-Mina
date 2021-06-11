@@ -1,6 +1,8 @@
-import { Request,Response } from "express";
+import { Request, Response } from "express";
 import connection from "../connection";
 import { getTokenData } from "../services/authenticator";
+var dayjs = require('dayjs')
+
 
 
 export default async function getRecipe(
@@ -9,11 +11,11 @@ export default async function getRecipe(
 ): Promise<any> {
     try {
         const tokenData = req.headers.authorization as string;
-        const id = req.params.id as string;
+        const id = Number(req.params.id);
 
         const resultToken = getTokenData(tokenData)
 
-        if(!resultToken){
+        if (!resultToken) {
             throw new Error("O usuário deste token não está cadastrado")
         }
 
@@ -23,25 +25,20 @@ export default async function getRecipe(
         }
 
         const [user] = await connection("receitaCokenu")
-            .where({id});
+            .where({ id });
 
-        if(!user){
+        if (!user) {
             throw new Error("Receita não encontrada")
         }
-
-        const [dia, mes, ano] = user.data_criacao.split("-");
-console.log(dia);
-
-        const data_criacao = new Date(`${dia}/${mes}/${ano}`);
-        console.log(data_criacao);
+        const date_create = dayjs(user.data_criacao).format('DD/MM/YYYY') 
         
-        // res.status(200).send({
-        //     id:user.id,
-        //     titulo:user.titulo,
-        //     modo_preparo:user.modo_preparo,
-        //     data_criacao:user.data_criacao
-        // })
+        res.status(200).send({
+            id: user.id,
+            titulo: user.titulo,
+            modo_preparo: user.modo_preparo,
+            data_criacao: date_create
+        })
     } catch (error) {
-        
+        res.status(400).send({ message: error.message })
     }
 }
