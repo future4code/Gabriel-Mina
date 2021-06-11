@@ -8,10 +8,12 @@ create table usuarioCokenu(
 );
 select * from usuarioCokenu;
 create table receitaCokenu(
-	id varchar(200) PRIMARY KEY ,
-	título varchar(200) not null,
+	id int not null PRIMARY KEY auto_increment ,
+	titulo varchar(200) not null,
 	modo_preparo varchar(200) not null,
 	data_criacao date not null,
     usuario_id varchar(200),
     foreign key (usuario_id) references usuarioCokenu(id) 
-)
+);
+-- alter table receitaCokenu add id int not null PRIMARY KEY auto_increment;
+-- alter table receitaCokenu add titulo varchar(200) not null;

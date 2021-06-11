@@ -31,7 +31,7 @@ export default async function login(
 
       if (!user || !hashCompare) {
          res.statusCode = 401;
-         throw new Error("Credenciais inválidas");
+         throw new Error("Senha diferente da cadastrada");
       }
 
       const token: string = generateToken({ id: user.id })

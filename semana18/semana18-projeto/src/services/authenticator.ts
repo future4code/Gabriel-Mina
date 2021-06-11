@@ -19,14 +19,11 @@ export const getTokenData = (
    token: string
 ): authenticationData | null => {
    try {
-
       const { id } = jwt.verify(token, process.env.JWT_KEY!) as authenticationData
 
       return { id }
 
    } catch (error) {
-      
-      console.log(error.message);
       return null
    }
 }
