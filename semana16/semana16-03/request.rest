@@ -1,0 +1,21 @@
+GET http://localhost:3003/users?gender="male"
+
+###
+
+GET http://localhost:3003/users
+
+###
+
+POST http://localhost:3003/users
+content-type: application/json
+
+{
+    "name": "Alexandre Frota",
+    "salary": 4000,
+    "birth_date": "1970-01-01",
+    "gender": "male"
+}
+
+###
+
+DELETE http://localhost:3003/users/6
