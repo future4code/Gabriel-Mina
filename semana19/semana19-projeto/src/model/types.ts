@@ -1,7 +1,3 @@
-enum POST_TYPES {
-    NORMAL = "normal",
-    EVENT = "event"
-}
 
 export type AuthenticationData = {
     id: string
@@ -11,9 +7,8 @@ export type post = {
     id: string,
     photo: string,
     description: string,
-    type: POST_TYPES,
-    createdAt: Date,
-    authorId: string
+    type: string,
+    author_id: string
 }
 
 export type UserType = {
