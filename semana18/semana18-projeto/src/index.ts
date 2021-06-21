@@ -7,9 +7,29 @@ import login from './endpoints/login'
 import profileUser from './endpoints/profileUser'
 
 
-app.post('/user/signup', createUser)
-app.post('/user/recipe',createRecipe)
-app.post('/user/login', login)
-app.get('/user/profile',profileUser)
-app.get('/user/:id',anotherUserProfile)
-app.get('/user/recipe/:id',getRecipe)
+app.post('/login', createUser);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.post('/user/recipe',createRecipe)
+// app.post('/user/login', login)
+// app.get('/user/profile',profileUser)
+// app.get('/user/:id',anotherUserProfile)
+// app.get('/user/recipe/:id',getRecipe)
