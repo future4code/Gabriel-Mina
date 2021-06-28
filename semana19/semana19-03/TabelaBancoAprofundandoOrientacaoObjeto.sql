@@ -9,3 +9,4 @@ create table accountUser(
 );
 
 select * from accountUser;
+
