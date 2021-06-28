@@ -10,15 +10,13 @@ export default async function createUser(
    res: Response
 ): Promise<void> {
    try {
+      const { name, email, password } = req.body;
 
-      const { name, email, pass } = req.body
-
-      if (!name || !email || !pass) {
-         res.statusCode = 422
-         throw new Error("Preencha corretamente os campos 'name','email' e 'pass'")
+      if (!name || !email || !password) {
+         throw new Error("TODAS AS INFORMACOES DEVEM SER PASSADAS");
       }
 
-      if (pass.length < 6) {
+      if (password.length < 6) {
          throw new Error("Senha deve possuir no mínimo 6 caracteres")
       }
 
@@ -36,25 +34,26 @@ export default async function createUser(
 
       const id: string = generateId();
 
-      const newHashPass = await hash(pass);
+      const newHashPass = await hash(password);
 
       const newUser: user = {
-         id,
+         id ,
          email,
          nome:name ,
          pass: newHashPass
       }
-
+      
       await connection('usuarioCokenu')
          .insert(newUser)
 
-      const token: string = generateToken({ id })
+         const token: string = generateToken({ id })
 
+      // CASO DE SUCESSO ! 
       res.status(201).send({
          "Token de acesso": token
       })
 
    } catch (error) {
-      res.status(400).send({ message: error.message})
+      res.status(404).send({ message: error.message })
    }
 }
