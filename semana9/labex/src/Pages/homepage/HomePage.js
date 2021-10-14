@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router';
-import { Container, ListagemViagem, ExplorePlanetas, TituloContainer, Planetas, PlanetasFilho, ImagemPlaneta, Inspiracoes, PlanetasFilhoInspiracoes, ImagemPlanetaViagens, Paragrafo } from './Style'
+import { Container, ListagemViagem, ExplorePlanetas, TituloContainer, Planetas,PlanetasCima, PlanetasFilho, ImagemPlaneta, Inspiracoes, PlanetasFilhoInspiracoes, ImagemPlanetaViagens, Paragrafo } from './Style'
 import Button from '@material-ui/core/Button';
 import marte from '../../img/marte.jpg'
 import plutao from '../../img/plutao.jpg'
@@ -29,21 +29,19 @@ export default function HomePage() {
             <Container>
                 <ListagemViagem>
                     <Button
-                        type="submit"
                         variant="contained"
                         color="primary"
                         onClick={goToTripList}
                     >Ver todas as viagens</Button>
                     <Button
-                        type="submit"
                         variant="contained"
                         color="primary"
                         onClick={goToAdmin}
-                    >àrea do admin</Button>
+                    >área do admin</Button>
                 </ListagemViagem>
                 <ExplorePlanetas>
                     <TituloContainer>Explore alguns planetas</TituloContainer>
-                    <Planetas>
+                    <PlanetasCima>
                         <PlanetasFilho>
                             <ImagemPlaneta src={marte} />
                         </PlanetasFilho>
@@ -56,7 +54,7 @@ export default function HomePage() {
                         <PlanetasFilho>
                             <ImagemPlaneta src={venus} />
                         </PlanetasFilho>
-                    </Planetas>
+                    </PlanetasCima>
                 </ExplorePlanetas>
                 <Inspiracoes>
                     <TituloContainer>Inspirações para próximas viagens</TituloContainer>
@@ -72,11 +70,7 @@ export default function HomePage() {
                         <PlanetasFilhoInspiracoes>
                             <ImagemPlanetaViagens src={curiosidadesterra} />
                             <Paragrafo>A Terra é o quinto maior planeta do Sistema Solar</Paragrafo>
-                        </PlanetasFilhoInspiracoes>
-                        <PlanetasFilhoInspiracoes>
-                            <ImagemPlanetaViagens src={estreladalva} />
-                            <Paragrafo>Ele é considerado o planeta gêmeo da Terra.</Paragrafo>
-                        </PlanetasFilhoInspiracoes>
+                        </PlanetasFilhoInspiracoes>                      
                     </Planetas>
                 </Inspiracoes>
             </Container>

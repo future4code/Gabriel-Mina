@@ -1,60 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
-import { ProtectedPage } from '../Hooks/ProtectedPage';
+import { ProtectedPage } from '../../Hooks/ProtectedPage';
 import Button from '@material-ui/core/Button';
-import styled from 'styled-components';
-import CandidateCard from '../Components/CandidateCard';
-import UrlBase from '../Constants/Constants'
+import CandidateCard from '../../Components/CandidateCard';
+import UrlBase from '../../Constants/Constants'
+import { Conteudo, Viagens, ViagensId, CandidatosPendentes, CandidatosAprovados, InformacoesViagens } from './styled'
 
-const Conteudo = styled.div`
-  display:flex;
-  flex:2;
-  min-height:600px;
-
-`
-const Viagens = styled.div`
-    min-height:800px;
-    display:flex;
-    flex:2;
-    margin:10px;
-    flex-direction:column;
-    justify-content:space-around;
-`
-const ViagensId = styled.div`
-    background-color:lightblue;
-    min-height:300px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-`
-const CandidatosPendentes = styled.div`
-    display:grid;
-    grid-gap:10px;
-    grid-auto-rows: 350px;
-    grid-template-columns:repeat(3,1fr);
-    margin:20px auto;
-    min-height:400px;
-`
-const CandidatosAprovados = styled.div`
-    display:flex;
-    flex:1;
-    background-color:lightgrey;
-    align-items:center;
-    border:1px solid black;
-    flex-direction:column;
-    font-weight:bold;
-    font-size:30px;
-`
-const InformacoesViagens = styled.div`
-    background-color:lightgrey;
-    font-weight:bold;
-    font-size:20px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    border:1px solid black;
-`
 export default function CreateTripPage() {
 
     ProtectedPage();
@@ -74,7 +26,7 @@ export default function CreateTripPage() {
             setTrip(response.data.trip);
             setCandidate(response.data.trip.candidates)
         } catch (erro) {
-            console.log("Erro", erro);
+            console.log("Erro", erro.response.data.message);
         }
     }
 
@@ -115,16 +67,16 @@ export default function CreateTripPage() {
             <Viagens>
                 <ViagensId>
                     {tripScreen()}
-                    <Button onClick={history.goBack}>Voltar</Button>
+                    <Button variant="contained" color="primary" onClick={history.goBack}>Voltar</Button>
                 </ViagensId>
+                <CandidatosAprovados>
+                    <h2>Candidatos Aprovados</h2>
+                    {candidateAproved && candidateAproved.length > 0 ? candidateAproved : <p>Não há candidatos aprovados</p>}
+                </CandidatosAprovados>
                 <CandidatosPendentes>
-                    {candidatesScreen}
+                    {candidatesScreen && candidatesScreen.length > 0 ? candidatesScreen : <p>Nao há nenhum candidato pendente</p>}
                 </CandidatosPendentes>
             </Viagens>
-            <CandidatosAprovados>
-                <h2>Candidatos Aprovados</h2>
-                {candidateAproved && candidateAproved.length > 0 ? candidateAproved : <p>Não há candidatos aprovados</p>}
-            </CandidatosAprovados>
         </Conteudo>
     )
 }

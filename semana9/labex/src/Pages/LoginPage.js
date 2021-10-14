@@ -90,8 +90,7 @@ export default function LoginPage() {
             window.localStorage.setItem("token", response.data.token)
             history.push("/admin/trips/list")
         } catch (erro) {
-            console.log(erro);
-            alert("Email ou senha incorretos!")
+            alert(erro.response.data.message);
         }
     }
 

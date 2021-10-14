@@ -30,6 +30,7 @@ const ListaDeViagens = styled.div`
     grid-template-columns:repeat(4,1fr);
     margin:10px auto;
     min-height:400px;
+    padding: 10px;
 `
 
 
@@ -60,9 +61,9 @@ export default function AdminHomePage() {
     return (
         <Conteudo>
             <Botoes>
-                <Button variant="outlined" color="primary" onClick={()=>logOut(history)}> voltar</Button>
-                <Button variant="outlined" color="primary" onClick={()=>goToCreateTripPage(history)}> Criar Viagem</Button>
-                <Button variant="outlined" color="primary" onClick={()=>logOut(history)}> Logout</Button>
+                <Button variant="contained" color="primary" onClick={()=>logOut(history)}> voltar</Button>
+                <Button variant="contained" color="primary" onClick={()=>goToCreateTripPage(history)}> Criar Viagem</Button>
+                <Button variant="contained" color="primary" onClick={()=>logOut(history)}> Logout</Button>
             </Botoes>
             <ListaDeViagens>
                 {listTripScreen}

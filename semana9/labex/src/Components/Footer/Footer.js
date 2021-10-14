@@ -4,39 +4,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
+import { Principal ,ItensFooter, TituloItensFooter , ItensPrincipalFooter , RedesSociais , RedesSociaisIcones} from './styled';
 
-
-const Principal = styled.div`
-    display:flex;
-    flex:1;
-    flex-direction:column;
-    background-color:#000000;
-    color:#ffffff;
-`
-const ItensFooter = styled.div`
-    width:200px;
-    display:flex;
-    text-align:center;
-    flex-direction:column;
-`
-const TituloItensFooter = styled.h2`
-    text-transform:uppercase;
-`
-const ItensPrincipalFooter = styled.div`
-    display:flex;
-    justify-content:space-around;
-    border-bottom: 1px solid #ffffff;
-`
-const RedesSociais = styled.div`
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-`
-const RedesSociaisIcones = styled.div`
-    display:flex;
-    justify-content:space-between;
-    width:500px;
-`
 export default function Footer() {
     return (
         <Principal>

@@ -12,8 +12,9 @@ import UrlBase from '../Constants/Constants'
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
-        border: '1px solid black'
+        border: '1px solid black',
+        height: 320,
+
     },
     media: {
         height: 140,
@@ -21,60 +22,68 @@ const useStyles = makeStyles({
 });
 
 const Botoes = styled.div`
-    width:330px;
     display:flex;
     justify-content:space-between;
-    margin:5px;
+    margin:0 5px;
+`
+const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex: none;
+    margin-right: 10px;
 `
 const CandidateCard = (props) => {
 
-    const {idTrip,getTripDetail,id,name, country, applicationText } = props;
+    const { idTrip, getTripDetail, id, name, country, applicationText } = props;
 
     const classes = useStyles();
 
-    const decideCadidate = async(decision) =>{
-        const body ={
+    const decideCadidate = async (decision) => {
+        const body = {
             "approve": decision
         }
         const token = window.localStorage.getItem("token")
-        try{
-            await axios.put(`${UrlBase}/trips/${idTrip}/candidates/${id}/decide`,body, {
+        try {
+            await axios.put(`${UrlBase}/trips/${idTrip}/candidates/${id}/decide`, body, {
                 headers: {
                     auth: token
                 }
             })
             alert("Decisão registrada com sucesso!")
             getTripDetail();
-        }catch(erro){
-            console.log("Erro",erro);
+        } catch (erro) {
+            console.log("Erro", erro.response.data.message);
         }
     }
 
     return (
-        <Card className={classes.root}>
-            <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image={candidato}
-                    title="candidato"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {name}
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {country}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {applicationText}
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
-            <Botoes>                
-                <Button variant="outlined" color="secondary" onClick={()=> decideCadidate(false)}>Reprovar</Button>
-                <Button variant="outlined" color="primary" onClick={()=> decideCadidate(true)}>Aprovar</Button>
-            </Botoes>
-        </Card>
+        <Main>
+            <Card className={classes.root}>
+                <CardActionArea>
+                    <CardMedia
+                        className={classes.media}
+                        image={candidato}
+                        title="candidato"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {name}
+                        </Typography>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {country}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {applicationText}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <Botoes>
+                    <Button variant="outlined" color="secondary" onClick={() => decideCadidate(false)}>Reprovar</Button>
+                    <Button variant="outlined" color="primary" onClick={() => decideCadidate(true)}>Aprovar</Button>
+                </Botoes>
+            </Card>
+        </Main>
     )
 
 }
